@@ -1,0 +1,2072 @@
+Index: ../assessment2/Cart.php
+===================================================================
+--- ../assessment2/Cart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/Cart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,146 +0,0 @@
+-<link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-
+-<?php
+-
+-@session_start();
+-
+-
+-$orderedProductsIDs = $_SESSION["orderedProductIds"];
+-$orderedProductsQtys = $_SESSION["orderedProductQtys"];
+-
+-echo "<div class = 'w3-table-all' >";
+-echo "<h2 align='center'>Shopping Cart</h2>";
+-
+-echo "<table class='w3-table-all w3-card-4' align='center' style='width:90%'>
+-            <tr>
+-            <th>Product Name</th>
+-            <th>Quantity</th>
+-            <th>Price Each</th>
+-            <th>Total Price</th>
+-            </tr>";
+-$i = 0;
+-while ($i<sizeof($orderedProductsIDs)) {
+-
+-    $orderedProductsID = $orderedProductsIDs[$i];
+-    $orderedProductsQty = $orderedProductsQtys[$i];
+-    $productName = getProductNameByProductID($orderedProductsID);
+-    $price = getProductPriceByProductID($orderedProductsID);
+-    $Totalprice = $price * $orderedProductsQty;
+-
+-
+-     echo   "<tr align='center'>
+-            <td>$productName</td>
+-            <td>$orderedProductsQty</td>
+-            <td>$$price</td>
+-            <td>$$Totalprice</td>
+-            </tr>";
+-
+-    $total = $total + ($price * $orderedProductsQty);
+-
+-    $i++;
+-}
+-echo "</table>";
+-
+-?>
+-<br>
+-<?php
+-
+-//free delivery over $300 purchase
+-$delivery = 25; // default delivery charge
+-if ($total > 300) {
+-    $delivery = 0;
+-    echo "<div margin-left = 20px>";
+-    echo "<h2 style='alignment: center'>Congratulation! you qualified for Free Delivery</h2>";
+-    $total1 = $total;
+-}else{
+-    $delivery = 25;
+-    $total1 = $total + $delivery;
+-}
+-echo"<p>Deliver Charges: $$delivery</p>";
+-echo "<h2 style='alignment: center'>Total: $$total1</h2>";
+-
+-//if the user is logged in than show form for checkout
+-if (isset($_SESSION["userID"])){
+-    ?>
+-    <form style="alignment: center" action="reviewOrder.php" method="post">
+-        <label><h4>Shipping Address</h4></label>
+-        <textarea name="shipAddress" rows="4" cols="60" placeholder="Shipping Address if Different"></textarea><br><br>
+-        <input class="button" type="submit" value="Checkout Now">
+-    </form>
+-   <?php
+-}
+-else{
+-    Echo "Please Login to place the order";
+-
+-}
+-echo "</div>";
+-echo "</div>";
+-    /**
+- * @return Connection
+- */
+-function createDatabaseConnection(){
+-    //create database connection
+-    $server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-    $dbusername = "h1r174kgefa2bwv1";
+-    $dbpassword = "nz1tdqgzvtixcxel";
+-    $dbname = "dry1psur1w11ayhb";
+-
+-    $conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-    return $conn;
+-
+-}
+-
+-/**
+- * @name getProductNameByProductID
+- * @param $productID
+- * @return Name of product
+- */
+-function getProductNameByProductID($productID)
+-{
+-    //create a connection
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select productName from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $name = $row["productName"];
+-    }
+-    return $name;
+-}
+-
+-/**
+- * @name getProductPriceByProductID
+- * @param $productID
+- * @return Product Price
+- */
+-function getProductPriceByProductID($productID){
+-
+-    //create a connection using function
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select pricePerUnit from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $price = $row["pricePerUnit"];
+-    }
+-    return $price;
+-}
+Index: ../assessment2/registernow.php
+===================================================================
+--- ../assessment2/registernow.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/registernow.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,46 +0,0 @@
+-<?php
+-
+-$firstname = $_POST["firstname"];
+-$lastname = $_POST["lastname"];
+-$username = $_POST["username"];
+-$password = $_POST["password"];
+-$address = $_POST["address"];
+-$phonenumber = $_POST["phoneNumber"];
+-
+-if ($firstname != "" && $lastname != "" && $username != "" && $password != "" && $address != "" && $phonenumber != "") {
+-
+-    //create database connection
+-
+-    $server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-    $dbusername = "h1r174kgefa2bwv1";
+-    $dbpassword = "nz1tdqgzvtixcxel";
+-    $dbname = "dry1psur1w11ayhb";
+-
+-    $conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-
+-//creat a query
+-    $sql = "INSERT INTO `users`(`id`, `firstname`, `lastname`, `username`, `password`, `address`, `phoneNumber`) 
+-VALUES (NULL ,'$firstname','$lastname','$username','$password','$address','$phonenumber')";
+-
+-//run the query
+-
+-    if (mysqli_query($conn, $sql)) {
+-        ?>
+-        <div>
+-            <?php include "welcome.php"; ?>
+-        </div>
+-         <?php
+-    } else {
+-        echo "Please Try registering again with all correct details. Thank you";
+-    }
+-
+-
+-}
+-
+-else{
+-    echo "Please fill in all the details in the Registration form";
+-}
+-
+-
+-
+-
+Index: ../assessment2/showCart.php
+===================================================================
+--- ../assessment2/showCart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/showCart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,69 +0,0 @@
+-<!DOCTYPE html>
+-<html>
+-<head>
+-    <meta charset="UTF-8">
+-    <title>The Pet Food Store</title>
+-    <link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-    <script src="js/script.js"></script>
+-</head>
+-<body onload="moveAd(), moveText(), invoice()">
+-<div class = "header">
+-    <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+-    <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-    <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+-</div>
+-
+-<div id = "nav">
+-    <ul>
+-        <li><a class="active" href="index.php">Home</a></li>
+-        <?php include "category.php";?>
+-        <li><a href="aboutus.php">About Us</a></li>
+-        <li><a href="register.php">Register Now</a></li>
+-    </ul>
+-</div>
+-<div id = "Main">
+-    <table id = "maintable">
+-        <tr>
+-            <td id="leftside">
+-                <div id ="sideAdv">
+-                    <img src = "images/food2.jpg" id="sideImage">
+-                    <p id = "text1">Welcome</p>
+-                    <p id = "text2">The Pet food Shop</p>
+-                </div>
+-            </td>
+-            <td style="alignment: top">
+-                <div style="width: 80%">
+-                    <?php include "Cart.php"; ?>
+-                </div>
+-
+-            </td>
+-            <td id="rightside">
+-
+-                <br><br>
+-                <?php include "login.php"; ?><br>
+-                <?php include "category.php"; ?><br><br>
+-                <li class="button"><a href="showCart.php">Shopping Cart</a></li>
+-                <?php
+-                @session_start();
+-                if (isset($_SESSION["userID"])){
+-                    ?>
+-                    <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br>
+-
+-                    <?php
+-                }
+-
+-                ?>
+-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-
+-
+-            </td>
+-        </tr>
+-    </table>
+-</div>
+-
+-
+-<?php include "footer.php" ?>
+-
+-</body>
+-</html>
+\ No newline at end of file
+Index: ../assessment2/css/.idea/codeStyles/codeStyleConfig.xml
+===================================================================
+--- ../assessment2/css/.idea/codeStyles/codeStyleConfig.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/css/.idea/codeStyles/codeStyleConfig.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,5 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <state>
+-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+-  </state>
+-</component>
+\ No newline at end of file
+Index: ../assessment2/category.php
+===================================================================
+--- ../assessment2/category.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/category.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,24 +0,0 @@
+-<?php
+-
+-//1. connect to database
+-$server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-$dbusername = "h1r174kgefa2bwv1";
+-$dbpassword = "nz1tdqgzvtixcxel";
+-$dbname = "dry1psur1w11ayhb";
+-
+-$conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-
+-//2. Create the Query
+-$sql = "select * from catagory";
+-
+- //
+-//3. Run the Query on the connection
+-
+-$result = mysqli_query($conn, $sql);
+-
+-//4. show the result
+-while ($row = $result->fetch_assoc()){
+-    ?>
+-<li><a href="index.php?category= <? echo $row["id"]; ?>"><?php echo $row["name"]; ?></a></li>
+-<?php
+-}
+Index: ../assessment2/checkout.php
+===================================================================
+--- ../assessment2/checkout.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/checkout.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,190 +0,0 @@
+-
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-<?php
+-
+-@session_start();
+-
+-$orderedProductsIDs = $_SESSION["orderedProductIds"];
+-$orderedProductsQtys = $_SESSION["orderedProductQtys"];
+-echo "<div class = 'w3-table-all' >";
+-echo "<h2 align='center'>We have received your order. Thank you!</h2>";
+-echo "<table class='w3-table-all w3-card-4' align='center' style='width:90%'>
+-        <tr>
+-        <th>Product Name</th>
+-        <th>Quantity</th>
+-        <th>Unit Price</th>
+-        <th>Total</th>
+-        </tr> ";
+-
+-$i = 0;
+-while ($i<sizeof($orderedProductsIDs)){
+-
+-    $orderedProductsID = $orderedProductsIDs[$i];
+-    $orderedProductsQty = $orderedProductsQtys[$i];
+-    $productName = getProductNameByProductID($orderedProductsID);
+-    $price = getProductPriceByProductID($orderedProductsID);
+-    $Totalprice = $price * $orderedProductsQty;
+-
+-    $total = $total + ($price*$orderedProductsQty);
+-
+-    $i++;
+-
+-    echo "<tr>
+-            <td align='center'>$productName</td>
+-            <td align='center'>$orderedProductsQty</td>
+-            <td align='center'>$$price</td>
+-            <td align='center'>$$Totalprice</td>
+-            </tr> ";
+-
+-
+-}
+-$userID = $_SESSION["userID"];
+-
+-//below code where i had tried to get the current order number also displaying but had no luck.. pls fix it for me if you can
+-/*$orderID =$_SESSION["orderID"];
+-$conn = createDatabaseConnection();
+-$sql = "select * from orders where userID = $userID";
+-$result = mysqli_query($conn, $sql);
+-$sql2 = "select * from orderline where orderID = $orderID";
+-while ($row = $result->fetch_assoc()) {
+-    $orderID =$_SESSION["orderID"];
+-    $orderID = $row["orderID"];
+-}*/
+-
+-//delivery charges
+-$delivery = 0;
+-if ($total>300){
+-    $delivery = 0;
+-    $total = $total + $delivery;
+-}else{
+-    $delivery = 25;
+-    $total = $total + $delivery;
+-}
+-//echo "<h3 align='center'>Order ID:$orderID</h3>";
+-echo "</table>";
+-echo "<h4 align='center'>Invoice Total: $$total</h4>";
+-
+-echo "</div>";
+-
+-/**
+- * @return Connection
+- */
+-function createDatabaseConnection(){
+-    //create database connection
+-    $server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-    $dbusername = "h1r174kgefa2bwv1";
+-    $dbpassword = "nz1tdqgzvtixcxel";
+-    $dbname = "dry1psur1w11ayhb";
+-
+-    $conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-    return $conn;
+-
+-}
+-
+-/**
+- * @name getProductNameByProductID
+- * @param $productID
+- * @return Name of product
+- */
+-function getProductNameByProductID($productID)
+-{
+-    //create a connection
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select productName from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $name = $row["productName"];
+-    }
+-    return $name;
+-}
+-
+-/**
+- * @name getProductPriceByProductID
+- * @param $productID
+- * @return Product Price
+- */
+-function getProductPriceByProductID($productID){
+-
+-    //create a connection using function
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select pricePerUnit from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $price = $row["pricePerUnit"];
+-    }
+-    return $price;
+-}
+-
+-$userID = $_SESSION["userID"];
+-$shipAddress = $_POST["shipAddress"];
+-date_default_timezone_set("Pacific/Auckland");
+-$datetime = date("Y-m-d H:i:s");
+-
+-function createAnOrder($userID, $shipAddress, $datetime)
+-{
+-    //connect to database
+-    $conn = createDatabaseConnection();
+-
+-    //Query
+-    $sql = "INSERT INTO `orders`(`orderID`, `userID`, `shipAddress`, `orderdate`) 
+-            VALUES (NULL,$userID,'$shipAddress','$datetime')";
+-
+-    //run Query
+-    mysqli_query($conn, $sql);
+-
+-    //get order ID
+-    $orderID = mysqli_insert_id($conn);
+-
+-    return $orderID;
+-
+-}
+-
+-function insertProductToOrderedTable($orderID, $productID, $qty){
+-
+-    //connect to database
+-    $conn = createDatabaseConnection();
+-
+-    // Query
+-    $sql = "INSERT INTO `orderline`(`orderedProductID`, `orderID`, `productID`, `Qty`) 
+-            VALUES (NULL,$orderID,$productID,$qty)";
+-
+-    // run query
+-    mysqli_query($conn, $sql);
+-}
+-
+-//create the order
+-$orderID = createAnOrder($userID, $shipAddress, $datetime);
+-$i = 0;
+-while ($i < sizeof($orderedProductsIDs)){
+-    $productID = $orderedProductsIDs[$i];
+-    $qty = $orderedProductsQtys[$i];
+-    insertProductToOrderedTable($orderID, $productID, $qty);
+-    $i++;
+-}
+-
+-//clear my shopping cart
+-$_SESSION["orderedProductIds"] = [];
+-$_SESSION["orderedProductQtys"] = [];
+-
+-
+-
+Index: ../assessment2/css/style.css
+===================================================================
+--- ../assessment2/css/style.css	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/css/style.css	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,287 +0,0 @@
+-/* body */
+-body {
+-    width: auto;
+-    margin: 30px 20px 20px 20px;
+-    background-color: blanchedalmond;
+-    z-index: -1;
+-    font-family: Calibri, serif;
+-}
+-
+-p {
+-    color: brown;
+-}
+-
+-/* Header */
+-.header img {
+-    display: block;
+-    box-shadow: 10px 10px 20px goldenrod;
+-    position: center;
+-    margin-left: auto;
+-    margin-right: auto;
+-    width: 40%;
+-    height: 200px;
+-    border-radius: 12px;
+-    margin-top: 30px;
+-}
+-
+-.logo {
+-    position: absolute;
+-    top: 20px;
+-    animation-name: movingLogo;
+-    animation-duration: 4s;
+-    animation-iteration-count: unset;
+-    border-radius: 20px;
+-}
+-
+-/* Header Pictures */
+-@keyframes movingLogo {
+-    0% {
+-        left: 100px;
+-        transform: rotate(0deg);
+-    }
+-    50% {
+-        left: 80%;
+-        transform: rotate(180deg);
+-    }
+-    100% {
+-        left: 100px;
+-        transform: rotate(360deg);
+-    }
+-}
+-/* page headings */
+-#dogfp {
+-	font-size: 40px;
+-    text-shadow: 3px 3px 5px brown;
+-	text-align: center;
+-	font-weight: bold;
+-	color: white;
+-	margin-top: 15px;
+-}
+-
+-/* Menu */
+-#nav ul {
+-    display: block;
+-    list-style-type: none;
+-    margin: 20px 0px;
+-    padding: 0;
+-    overflow: hidden;
+-    background-color: brown;
+-
+-}
+-
+-#nav li {
+-    float: left;
+-}
+-
+-#nav li a {
+-    display: block;
+-    color: white;
+-    text-align: center;
+-    padding: 14px 16px;
+-    text-decoration: none;
+-}
+-
+-/*hover */
+-#nav li a:hover {
+-    background-color: #4CAF50;
+-}
+-
+-#nav .active {
+-    background-color: #4CAF50;
+-}
+-
+-/* footer */
+-#footer {
+-    background-color: brown;
+-    text-align: center;
+-    color: white;
+-}
+-
+-#welcome {
+-    height: auto;
+-    max-width: 90%;
+-}
+-
+-/* main */
+-#maintable {
+-    width: 100%;
+-}
+-
+-#leftside {
+-    width: 20%;
+-    vertical-align: top;
+-
+-
+-}
+-
+-#rightside {
+-    width: 20%;
+-    vertical-align: top;
+-    alignment: center;
+-    padding-right: 20px;
+-
+-
+-}
+-
+-#sideAdv {
+-    width: 300px;
+-    overflow: hidden;
+-    text-align: center;
+-}
+-
+-#sideImage {
+-    height: 700px;
+-    position: relative;
+-    vertical-align: top;
+-    padding-top: 10px;
+-    opacity: 60%;
+-    z-index: -1;
+-
+-}
+-
+-#text1 {
+-    position: relative;
+-    top: -300px;
+-    font-size: 40px;
+-    font-weight: bold;
+-    color: brown;
+-}
+-
+-#text2 {
+-    position: relative;
+-    top: -400px;
+-    font-size: 40px;
+-    font-weight: bold;
+-    color: brown;
+-    display: none;
+-}
+-
+-/* For main */
+-.product {
+-    width: 150px;
+-    display: inline-block;
+-    margin: 20px;
+-    height: 150px;
+-
+-}
+-
+-#middlecontent {
+-    width: 100%;
+-    vertical-align: top;
+-    display: inline-block;
+-    alignment: center;
+-    color: maroon;
+-    margin-right: 10px;
+-    margin-left: 40px;
+-}
+-.w3-table-all {
+-    display: block;
+-    vertical-align: top;
+-    margin-top: 20px;
+-    margin-bottom: 20px;
+-    border: 10px solid maroon;
+-    color: maroon;
+-    box-shadow: 10px 10px 20px goldenrod;
+-    text-align: center;
+-}
+-
+-.w3-input{
+-    border-radius: 16px;
+-    text-align: center;
+-    color: maroon;
+-    margin: 4px 2px;
+-
+-}
+-
+-.w3-container{
+-    border-radius: 12px;
+-    color: maroon;
+-    vertical-align: top;
+-    text-align: center;
+-
+-}
+-.product img {
+-    width: 120px;
+-    height: 130px;
+-    margin-bottom: 20px;
+-}
+-
+-.qty {
+-    width: 30px;
+-}
+-
+-.cartInput {
+-    width: 20px;
+-}
+-
+-/* Registration Form Layout */
+-.row {
+-    display: block;
+-    float: left;
+-    text-align: left;
+-    color: brown;
+-    margin-top: 20px;
+-    margin-bottom: 20px;
+-}
+-.regform {
+-    display: block;
+-    margin-left: 10%;
+-    margin-top: 5%;
+-    margin-bottom: 30%;
+-}
+-
+-.input {
+-    display: inline-block;
+-    margin-left: 100px;
+-    float: right;
+-    text-align: left;
+-    color: maroon;
+-}
+-.input-hover:hover{
+-    background-color: maroon;
+-    color: white;
+-}
+-
+-
+-.regpic {
+-    position:absolute;
+-    top: 40%;
+-    left: 60%;
+-    width:auto;
+-    height:auto;
+-    //z-index: 2;
+-}
+-
+-.button {
+-    background-color: #4CAF50;
+-    border: none;
+-    color: white;
+-    padding: 6px 20px;
+-    border-radius: 12px;
+-    text-align: center;
+-    text-decoration: none;
+-    display: inline-block;
+-    font-size: 12px;
+-    margin: 4px 2px;
+-    transition-duration: 0.4s;
+-}
+-.button {
+-    background-color: white;
+-    color: maroon;
+-    border: 2px solid maroon;
+-}
+-
+-.button:hover {
+-    background-color: maroon;
+-    color: white;
+-}
+-.button a{
+-    text-decoration: none;
+-}
+-
+-.w3-container_w3-card-4_w3-light-grey {
+-    display: inline-block;
+-    vertical-align: top;
+-    margin-top: 10px;
+-
+-}
+Index: ../assessment2/.idea/codeStyles/codeStyleConfig.xml
+===================================================================
+--- ../assessment2/.idea/codeStyles/codeStyleConfig.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/.idea/codeStyles/codeStyleConfig.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,5 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <state>
+-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+-  </state>
+-</component>
+\ No newline at end of file
+Index: ../assessment2/products.php
+===================================================================
+--- ../assessment2/products.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/products.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,45 +0,0 @@
+-<link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-<?php
+-@session_start();
+-
+-$server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-$dbusername = "h1r174kgefa2bwv1";
+-$dbpassword = "nz1tdqgzvtixcxel";
+-$dbname = "dry1psur1w11ayhb";
+-
+-$conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-
+-// take input from category
+-if (isset($_GET["category"])) {
+-    //echo "<h4>" . $_GET["category"] . "</h4>";
+-    $sql = "select * from product where catagory= " . $_GET["category"];
+-} else {
+-    $sql = "select * from product";
+-}
+-
+-$result = mysqli_query($conn, $sql);
+-
+-while ($row = $result->fetch_assoc()) {
+-    //echo $row["id"]; // commented out so the id does not show on the page
+-
+-
+-    ?>
+-
+-    <div class="product" style="alignment: top">
+-
+-        <form class="w3-container w3-card-4 w3-light-grey" action="addToCart.php" method="post">
+-            <p><?php echo $row["productName"]; ?></p>
+-            <img src="<?php echo $row["productImage"]; ?>">
+-            <p>$<?php echo $row["pricePerUnit"]; ?> Each</p>
+-            <input name="productID" value="<?php echo $row["id"]; ?>" type="hidden">
+-            <input class="w3-input" name="qty" type="number" placeholder="Qty" min="0" size="8">
+-            <input class = button type="submit" value="Add to Cart" size="8"><br>
+-
+-        </form><br>
+-
+-    </div>
+-    <?php
+-}
+-?>
+-
+Index: ../assessment2/login.php
+===================================================================
+--- ../assessment2/login.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/login.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,62 +0,0 @@
+-<link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-<?php
+-if (isset($_POST["username"]) && isset($_POST["password"])) {
+-    $username = $_POST["username"];
+-    $password = $_POST["password"];
+-
+-    //create database connection
+-
+-    $server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-    $dbusername = "h1r174kgefa2bwv1";
+-    $dbpassword = "nz1tdqgzvtixcxel";
+-    $dbname = "dry1psur1w11ayhb";
+-
+-    $conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-
+-    //create a query
+-    $sql = "select * from users
+-    where username = '$username' and 
+-    password = '$password'";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    // show the result
+-
+-    if ($result->num_rows == 1) {
+-        echo "<h4 align='center' style='color: maroon'>You are now Logged in</h4>";
+-        while ($row = $result->fetch_assoc()) {
+-            echo $row["firstname " . "lastname"];
+-            //session start
+-            @session_start();
+-            //set session variable
+-            $_SESSION["userID"] = $row["id"];
+-            $_SESSION["firstname"] = $row["firstname"];
+-        }
+-    } else {
+-        echo "<h4>Wrong username or password</h4><br>";
+-    }
+-}
+-?>
+-<?php
+-if (!isset($_SESSION["userID"])) {
+-    ?>
+-    <form class="w3-container w3-card-4 w3-light-grey" action="<?php $_SERVER["PHP_SELF"]; ?>" method="post">
+-        <h3 style="color: maroon" align="center">Please Login:</h3>
+-        <div align="center">
+-        <input class="w3-input" name="username" type="text" placeholder="Username">
+-        <input class="w3-input" name="password" type="password" placeholder="Password"><br><br>
+-        <input class= button type="submit" value="Login">
+-        </div>
+-    </form>
+-
+-    <?php
+-}
+-else{
+-    ?>
+-    <h4 align="center"><a href="logout.php">Logout</a><br></h4>
+-<?php
+-}
+-?>
+\ No newline at end of file
+Index: ../assessment2/register.php
+===================================================================
+--- ../assessment2/register.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/register.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,74 +0,0 @@
+-<!Doctype Html>
+-
+-<html>
+-        <meta charset="UTF-8">
+-        <title>Register</title>
+-        <link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-        <script src="js/script.js"></script>
+-
+-        <body onload="moveAd(), moveText()">
+-            <div class="header">
+-                <img src="images/mainimage.jpg" alt="Petfood Main Image">
+-                <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-                <div id="dogfp"><span id="logoText">Registration Form</span></div>
+-            </div>
+-            <div id="nav">
+-                <ul>
+-                    <li><a href="index.php">Home</a></li>
+-                    <?php include "category.php" ?>
+-                    <li><a href="aboutus.php">About Us</a></li>
+-                    <li><a class="active">Register Now</a></li>
+-                </ul>
+-            </div>
+-
+-            <div class="regform">
+-                <form method="post" action="registernow.php" class="contact-form">
+-                    <div class="row">
+-                        <div>
+-                            <label>First Name:</label>
+-                            <input class="input" name="firstname" type="text" placeholder="First Name" required>
+-                        </div>
+-                        <br>
+-                        <div>
+-                            <label>Last Name:</label>
+-                            <input class="input" name="lastname" type="text" placeholder="Last Name" required>
+-                        </div>
+-                        <br>
+-                        <div>
+-                            <label>Username:</label>
+-                            <input class="input" name="username" type="text" placeholder="Username" required>
+-                        </div>
+-                        <br>
+-                        <div>
+-                            <label>Password:</label>
+-                            <input class="input" name="password" type="password" placeholder="Password" required>
+-                        </div>
+-                        <br>
+-                        <div>
+-                            <label>Full Address:</label>
+-                            <textarea class="input" name="address" placeholder="Your Address"></textarea>
+-                        </div>
+-                        <br><br>
+-                        <div>
+-                            <label>Phone Number </label>
+-                            <input class="input" name="phoneNumber" type="text" placeholder="Phone Number">
+-                        </div>
+-                        <br><br>
+-                        <div>
+-                            <input class="button" type="submit" value="Submit">
+-                        </div>
+-                    </div>
+-
+-                </form>
+-
+-
+-            </div>
+-
+-            <div><img class="regpic" src="images/register.png" alt="Register pic"</div>
+-
+-        </body>
+-
+-        <?php include "footer.php"?>
+-
+-</html>
+\ No newline at end of file
+Index: ../assessment2/index.php
+===================================================================
+--- ../assessment2/index.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/index.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,73 +0,0 @@
+-<!DOCTYPE html>
+-<html>
+-<head>
+-  <meta charset="UTF-8">
+-  <title>The Pet Food Store</title>
+-  <link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-  <script src="js/script.js"></script>
+-</head>
+-<body onload="moveAd(), moveText()">
+-    <div class = "header">
+-        <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+-        <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-      <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+-    </div>
+-
+-<div id = "nav">
+-  <ul>
+-    <li><a class="active" href="index.php">Home</a></li>
+-    <?php include "category.php";?>
+-    <li><a href="aboutus.php">About Us</a></li>
+-    <li><a href="register.php">Register Now</a></li>
+-  </ul>
+-</div>
+-<div id = "Main">
+-  <table id = "maintable">
+-    <tr>
+-      <td id="leftside">
+-        <div id ="sideAdv">
+-          <img src = "images/food2.jpg" id="sideImage">
+-          <p id = "text1">Welcome!</p>
+-          <p id = "text2">The Pet food Shop</p>
+-        </div>
+-      </td>
+-      <td style="alignment: top">
+-          <div style="alignment: top">
+-              <?php include "products.php"; ?>
+-          </div>
+-
+-      </td>
+-      <td id="rightside">
+-
+-          <br><br>
+-              <?php include "login.php"; ?><br>
+-              <?php include "category.php"; ?><br><br>
+-          <div style="alignment: center"></div>
+-              <li class="button"><a href="showCart.php">My Shopping Cart</a></li>
+-          <?php
+-          @session_start();
+-            if (isset($_SESSION["userID"])){
+-              ?>
+-
+-          <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br><br>
+-            </div>
+-          <?php
+-          }
+-
+-          ?>
+-          <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-
+-
+-
+-      </td>
+-    </tr>
+-  </table>
+-</div>
+-
+-
+-
+-</body>
+-<?php include "footer.php" ?>
+-
+-</html>
+\ No newline at end of file
+Index: ../assessment2/css/.idea/css.iml
+===================================================================
+--- ../assessment2/css/.idea/css.iml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/css/.idea/css.iml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="WEB_MODULE" version="4">
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: ../assessment2/.idea/workspace.xml
+===================================================================
+--- ../assessment2/.idea/workspace.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/.idea/workspace.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,63 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ChangeListManager">
+-    <list default="true" id="b3ebbcb2-fc5e-43c7-8d1b-4c15fb9973f0" name="Default Changelist" comment="" />
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="ComposerSettings">
+-    <execution />
+-  </component>
+-  <component name="ProjectId" id="1j6vWRcVk90RIb7DzapwQxx41gI" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+-    <property name="vue.rearranger.settings.migration" value="true" />
+-  </component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\kirte\OneDrive\Desktop\Uni\19102020\Case Study 1 Demo-20201019\WebContent" />
+-    </key>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="b3ebbcb2-fc5e-43c7-8d1b-4c15fb9973f0" name="Default Changelist" comment="" />
+-      <created>1603137388083</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1603137388083</updated>
+-      <workItem from="1603137389293" duration="33889000" />
+-      <workItem from="1603262067663" duration="951000" />
+-      <workItem from="1603264241377" duration="4696000" />
+-      <workItem from="1603309227480" duration="5399000" />
+-    </task>
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="WindowStateProjectService">
+-    <state x="526" y="241" key="#Notifications" timestamp="1603224662745">
+-      <screen x="0" y="0" width="1536" height="834" />
+-    </state>
+-    <state x="526" y="241" key="#Notifications/0.0.1536.834@0.0.1536.834" timestamp="1603224662745" />
+-    <state x="-1295" y="196" key="FileChooserDialogImpl" timestamp="1603254140868">
+-      <screen x="-1920" y="8" width="1920" height="1050" />
+-    </state>
+-    <state x="-1295" y="196" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1603254140868" />
+-    <state x="-1574" y="86" key="SettingsEditor" timestamp="1603254144909">
+-      <screen x="-1920" y="8" width="1920" height="1050" />
+-    </state>
+-    <state x="-1574" y="86" key="SettingsEditor/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1603254144909" />
+-    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1603224836107" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../assessment2/css/.idea/modules.xml
+===================================================================
+--- ../assessment2/css/.idea/modules.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/css/.idea/modules.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/css.iml" filepath="$PROJECT_DIR$/.idea/css.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../assessment2/aboutus.php
+===================================================================
+--- ../assessment2/aboutus.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/aboutus.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,123 +0,0 @@
+-<!DOCTYPE html>
+-<html>
+-<head>
+-    <meta charset="UTF-8">
+-    <!-- Don't forget your Title here -->
+-    <title>About</title>
+-    <link rel="stylesheet" type="text/css" href="css/style.css">
+-    <script src="js/script.js"></script>
+-</head>
+-<body onload="moveAd(), moveText()">
+-<div class="header">
+-    <img src = "images/logo.png" alt="Petfood Main Image">
+-    <div id="dogfp"><span id="logoText">About Us!</span></div>
+-</div>
+-<div id="nav">
+-    <ul>
+-        <li><a href="index.php">Home</a></li>
+-        <?php include "category.php"?>
+-        <li><a class="active">About Us</a></li>
+-        <li><a href="register.php">Register Now</a></li>
+-    </ul>
+-</div>
+-<div id="Main">
+-    <table id="maintable">
+-        <tr>
+-            <td id="leftside">
+-                <div id="sideAdv">
+-                    <img src="images/aboutus.jpg" id="sideImage">
+-                    <p id="text1">Trust Us for your Pet</p>
+-                    <p id="text2">Thank you</p>
+-                </div>
+-            </td>
+-            <td id="middlecontent" style="width: 80%;">
+-
+-                <h1>Welcome to The Pet Food Store, <br> Please read about us and our customer testimonials</h1>
+-
+-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+-
+-                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+-                    totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae
+-                    dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit,
+-                    sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam
+-                    est, qui dolorem ipsum, quia dolor sit amet, consectetur, adipiscin] velit, sed quia non numquam do
+-                    eius modi tempora incididunt, ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+-
+-                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+-                    aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit
+-                    esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla
+-                    pariatur.</p>
+-
+-                <h2>Vero eos et accusamus et iusto odio dignissimos ducimus</h2>
+-
+-                <p>Qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias
+-                    excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt
+-                    mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+-                    distinctio. </p>
+-
+-                <p>Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod
+-                    maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Qua
+-                    temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et
+-                    voluptates repudiandae sint et molestiae non recusandae pondere ad lineam. Itaque earum rerum hic
+-                    tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
+-                    perferendis doloribus asperiores repellat</p>
+-
+-                <p>Quibus ego assentior, dum modo de iisdem rebus ne Graecos quidem legendos putent. Res vero bonaa
+-                    verbis electis graviter omateque dictas quis i legat? Nisi qui se plane Graeciun dici velit, ut a 9
+-                    Scaeiola est praetore salutatus Athenis Albucius. Quem quidem locum cum multa venustate et omm sale
+-                    idem Lucilius, apud quem praeclare Scaevola.</p>
+-
+-                <p>Qui autem alia matunt scribi a nobis, aequi esse debent, quod et seripta multa sunt, sic ut plura
+-                    nemini e nostris, et scribentur fortasse plura si vita suppetet; et tamen qui diligenter haec quae
+-                    de philosophia Htteris mandamus legere assueverit, iudicabit nulla ad legendum his esse potiora.</p>
+-
+-                <h3>Tempore intellegi convenire</h3>
+-
+-                <p>Epicurus autem, in quibus sequitur Democritum, noil fere labitur, Quam- quam utriusque cum mutta non
+-                    prolx). turn illiid in priniis, quoJ, cum in rerum nalura duo quaerenda sint, ununi quae materia sit
+-                    ex qua quaeque res cfficiatur, alterum quae vis sit quae quidque efficiat, de materia disserucrunt,
+-                    vim et causam efficiendi reliquerunt. Sed lioc commune vitiuni; illae Epicur propriae ruinae: censet
+-                    enim eadem ilia indlvidua e solida corpora ferri deorsum suo pondere ad lineam i hunc naturalem esse
+-                    omnium corporum motuni.</p>
+-
+-                <p>Deinde ibidem homo acutus, cam illud occorreret, j omnia deorsum e regione ferrentur et, ut dixi, ad
+-                    lineam, numquam fore ut atomus altera alteram posset attingere, itaque attulit rem commenticiam.</p>
+-
+-                <p>Declinare dixit atomum perpaulum, quo nihil posset fieri minus; ita eifici complexiones et
+-                    copulationes et adhaesiones atomorum inter se, ex quo eificeretur mundus omnesque partes mundi
+-                    quaeque in eo essent. Quae cum res tota fieta sit piieriliter, turn ne efficit quidem^ quod vult.
+-                    Nam et ipsa declinatio ad libidinem fiiigitur - ait enim deelinare atomum sine causa, quo nibil
+-                    turpius physico quam fieri.</p>
+-
+-
+-            </td>
+-            <td id="rightside">
+-
+-                <br><br>
+-                <?php include "login.php"; ?><br>
+-                <?php include "category.php"; ?><br><br>
+-                <li><a href="showCart.php">Shopping Cart</a></li>
+-                <?php
+-                @session_start();
+-                if (isset($_SESSION["userID"])){
+-                    ?>
+-                    <li><a href="yourOrder.php">My Orders</a></li><br><br>
+-
+-                    <?php
+-                }
+-
+-                ?>
+-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-            </td>
+-        </tr>
+-    </table>
+-</div>
+-
+-
+-</body>
+-<?php include "footer.php"?>
+-
+-</html>
+\ No newline at end of file
+Index: ../assessment2/addToCart.php
+===================================================================
+--- ../assessment2/addToCart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/addToCart.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,44 +0,0 @@
+-<?php
+-
+-//take the post from any product
+-$productID = $_POST["productID"];
+-$qty = $_POST["qty"];
+-
+-// start a session
+-@session_start();
+-
+-//get or set session variable
+-
+-// for else --> if there are no ordered products list in my session, will create one
+-
+-if (isset($_SESSION["orderedProductIds"])){
+-    //if there is something in our shopping cart
+-
+-    $orderedProductsIDs = $_SESSION["orderedProductIds"];
+-    $orderedProductsQtys = $_SESSION["orderedProductQtys"];
+-
+-    if (in_array($productID, $orderedProductsIDs)){
+-        $index = array_search($productID, $orderedProductsIDs);
+-        $orderedProductsQtys[$index] += $qty;
+-    }else{
+-
+-        array_push($orderedProductsIDs, $productID);
+-        array_push($orderedProductsQtys, $qty);
+-    }
+-}
+-else{
+-    // if nothing in our shopping cart
+-    $orderedProductsIDs = [];
+-    $orderedProductsQtys = [];
+-
+-    array_push($orderedProductsIDs, $productID); // append one at the bottom of the array to the bottom of the table
+-    array_push($orderedProductsQtys, $qty);
+-}
+-
+-// Put the new ordered product list back to session variable.
+-$_SESSION["orderedProductIds"] = $orderedProductsIDs;
+-$_SESSION["orderedProductQtys"] = $orderedProductsQtys;
+-
+-//go back to previous page code once added
+-
+-header('location: ' . $_SERVER['HTTP_REFERER']);
+\ No newline at end of file
+Index: ../assessment2/.idea/WebContent.iml
+===================================================================
+--- ../assessment2/.idea/WebContent.iml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/.idea/WebContent.iml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="WEB_MODULE" version="4">
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: ../assessment2/welcome.php
+===================================================================
+--- ../assessment2/welcome.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/welcome.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,71 +0,0 @@
+-
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>The Pet Food Store</title>
+-    <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+-    <script src="js/script.js"></script>
+-    <title>Welcome to The Pet Food Store</title>
+-</head>
+-
+-<body onload="moveAd(), moveText()">
+-<div class = "header">
+-    <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+-    <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-    <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+-</div>
+-
+-<div id = "nav">
+-    <ul>
+-        <li><a class="active" href="index.php">Home</a></li>
+-        <?php include "category.php" ?>
+-        <li><a href="aboutus.php">About Us</a></li>
+-        <li><a href="register.php">Register Now</a></li>
+-    </ul>
+-</div>
+-<div id = "Main">
+-    <table id = "maintable">
+-        <tr>
+-            <td id="leftside">
+-                <div id ="sideAdv">
+-                    <img src = "images/food2.jpg" id="sideImage">
+-                    <p id = "text1">Welcome</p>
+-                    <p id = "text2">The Pet food Shop</p>
+-                </div>
+-            </td>
+-            <td id="middlecontent">
+-                <div>
+-                    <div align="center"> <img src="images/welcome.jpg" id="welcome"></div>
+-                    <h2 align="center">You have been successfully registered</h2>
+-                    <h3 align="center"><a href="index.php">Start Shopping Now!</a></h3>
+-                </div>
+-
+-            </td>
+-            <td id="rightside">
+-
+-                <br><br>
+-                <?php include "login.php"; ?><br>
+-                <?php include "category.php"; ?><br><br>
+-                <li><a href="showCart.php">Shopping Cart</a></li>
+-                <?php
+-                @session_start();
+-                if (isset($_SESSION["userID"])){
+-                    ?>
+-                    <li><a href="yourOrder.php">My Orders</a></li><br><br>
+-
+-                    <?php
+-                }
+-
+-                ?>
+-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-            </td>
+-        </tr>
+-    </table>
+-</div>
+-
+-
+-</body>
+-<?php include "footer.php" ?>
+-</html>
+-
+Index: ../assessment2/footer.php
+===================================================================
+--- ../assessment2/footer.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/footer.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,3 +0,0 @@
+-<?php
+-
+-echo "<p id='footer'>Copyright &copy; 1999-" . date("Y") . " The Pet Food Shop</p>";
+Index: ../assessment2/.idea/modules.xml
+===================================================================
+--- ../assessment2/.idea/modules.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/.idea/modules.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/WebContent.iml" filepath="$PROJECT_DIR$/.idea/WebContent.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../assessment2/logout.php
+===================================================================
+--- ../assessment2/logout.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/logout.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,9 +0,0 @@
+-<?php
+-//logout page
+-@session_start();
+-@session_destroy();
+-header('location:index.php');
+-?>
+-
+-
+-
+Index: ../assessment2/js/script.js
+===================================================================
+--- ../assessment2/js/script.js	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/js/script.js	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,209 +0,0 @@
+-/**
+- * Author: Kirteshkumar Mehta
+- * Date: 20/10/2020
+- * Version: 1.0
+- * Purpose: create JavaScript for all web pages
+- */
+-
+-/**
+- * Purpose: left animation
+- * 
+- * @returns
+- */
+-
+-function moveAd() {
+-	left = 0;
+-	setInterval(function() {
+-		image = document.getElementById("sideImage");
+-		image.style.left = left + "px";
+-		left--;
+-		if (left == -500) {
+-			left = 0;
+-		}
+-	}, 50);
+-}
+-
+-function moveText() {
+-	top1 = -400;
+-	textNo = 1;
+-	setInterval(function() {
+-		if (textNo == 1) {
+-			text = document.getElementById("text1");
+-			text.style.display = "inline";
+-			text.style.top = top1 + "px";
+-			top1++;
+-			if (top1 == -100) {
+-				textNo = 2;
+-				top1 = -400;
+-				text.style.display = "none";
+-			}
+-		} else {
+-			text = document.getElementById("text2");
+-			text.style.display = "inline";
+-			text.style.top = top1 + "px";
+-			top1++;
+-			if (top1 == -100) {
+-				textNo = 1;
+-				top1 = -400;
+-				text.style.display = "none";
+-			}
+-		}
+-
+-	}, 50);
+-}
+-
+-/*
+-function addToCart(e) {
+-	cart = document.getElementById("cartDiv");
+-	switch (e.id) {
+-	case "addBread":
+-		qty = document.getElementById("breadQty").value;
+-		cart
+-				.insertAdjacentHTML(
+-						'beforeend',
+-						'<p>DogFood: <input type="number" class="cartInput" id = "cartBread" pName = "DogFood" price="35.20" value="'
+-								+ qty
+-								+ '"> Price: $'
+-								+ (Number(qty) * 35.20)
+-								+ '</p>');
+-		break;
+-	case "addCheese":
+-		qty = document.getElementById("cheeseQty").value;
+-		cart
+-				.insertAdjacentHTML(
+-						'beforeend',
+-						'<p>DogFood: <input type="number" class="cartInput" id = "cartCheese" pName = "DogFood" price="33.9" value="'
+-								+ qty
+-								+ '"> Price: $'
+-								+ (Number(qty) * 33.9)
+-								+ '</p>');
+-		break;
+-	case "addSpread":
+-		qty = document.getElementById("spreadQty").value;
+-		cart
+-				.insertAdjacentHTML(
+-						'beforeend',
+-						'<p>DogFood: <input type="number" class="cartInput" id = "cartSpread" pName = "DogFood" price="39" value="'
+-								+ qty
+-								+ '"> Price: $'
+-								+ (Number(qty) * 39)
+-								+ '</p>');
+-		break;
+-	case "addMilk1":
+-		qty = document.getElementById("milk1Qty").value;
+-		cart
+-				.insertAdjacentHTML(
+-						'beforeend',
+-						'<p>CatFood: <input type="number" class="cartInput" id = "cartMilk1" pName = "CatFood" price="24.5" value="'
+-								+ qty
+-								+ '"> Price: $'
+-								+ (Number(qty) * 24.5)
+-								+ '</p>');
+-		break;
+-	case "addMilk2":
+-		qty = document.getElementById("milk2Qty").value;
+-		cart
+-				.insertAdjacentHTML(
+-						'beforeend',
+-						'<p>CatFood: <input type="number" class="cartInput" id = "cartMilk2" pName = "CatFood" price="29.32" value="'
+-								+ qty
+-								+ '"> Price: $'
+-								+ (Number(qty) * 29.32)
+-								+ '</p>');
+-		break;
+-	default:
+-		// code block
+-	}
+-
+-}
+-
+-function addToInvoice() {
+-	
+-}
+-
+-/!**
+- * Show invoice page
+- *!/
+-function invoice() {
+-	
+-	voicePage = document.getElementById("voicePage");
+-	//Get the button that opens the modal
+-	var btn = document.getElementById("showInvoiceBut");
+-
+-	//Get the <span> element that closes the model
+-	var span = document.getElementsByClassName("close")[0];
+-
+-	//When the user clicks on the button, open the model
+-	btn.onclick = function() {
+-		cart = document.getElementsByClassName("cartInput");
+-		voiceContent = document.getElementById("voice-content");
+-		Total = 0;
+-		var elems = document.getElementsByClassName("items");
+-		i = 0
+-		while (i<elems.length){
+-			elems[i].parentNode.removeChild(elems[i]);
+-		}
+-		
+-		
+-		i = 0;
+-		while (i < cart.length) {
+-			console.log(cart[i].id);
+-			qty = cart[i].value;
+-			switch (cart[i].id) {
+-			case "cartBread":
+-				voiceContent.insertAdjacentHTML(
+-								'beforeend',
+-								'<p class = "items">DogFood: Qty:'+ qty +' Price:$' + (Number(qty) * 35.20)+ '</p>');
+-				Total += (Number(qty) * 35.20);
+-				break;
+-			case "cartCheese":
+-				voiceContent.insertAdjacentHTML(
+-						'beforeend',
+-						'<p class = "items">DogFood: Qty:'+ qty +' Price:$' + (Number(qty) * 33.9)+ '</p>');
+-				Total += (Number(qty) * 33.9);
+-				break;
+-			case "cartSpread":
+-				voiceContent.insertAdjacentHTML(
+-						'beforeend',
+-						'<p class = "items">DogFood: Qty:'+ qty +' Price:$' + (Number(qty) * 39)+ '</p>');
+-				Total += (Number(qty) * 39);
+-				break;
+-			case "cartMilk1":
+-				voiceContent.insertAdjacentHTML(
+-						'beforeend',
+-						'<p class = "items">CatFood: Qty:'+ qty +' Price:$' + (Number(qty) * 24.5)+ '</p>');
+-				Total += (Number(qty) * 24.5);
+-				break;
+-			case "cartMilk2":
+-				voiceContent.insertAdjacentHTML(
+-						'beforeend',
+-						'<p class = "items">CatFood: Qty:'+ qty +' Price:$' + (Number(qty) * 29.32)+ '</p>');
+-				Total += (Number(qty) * 29.32);
+-				break;
+-			default:
+-				// code block
+-			}
+-			
+-			i++;
+-
+-		}
+-		voiceContent.insertAdjacentHTML(
+-				'beforeend',
+-				'<p class = "items">Total: $'+ Total+'</p>');
+-		
+-		voicePage.style.display = "block";
+-	}
+-
+-	//When the user clicks on <span> (x), close the modal
+-	span.onclick = function() {
+-		voicePage.style.display = "none";
+-	}
+-
+-	//When the user clicks anywhere outside of the modal, close it
+-	window.onclick = function(event) {
+-		if (event.target == voicePage) {
+-			voicePage.style.display = "none";
+-		}
+-	}
+-}
+-*/
+Index: ../assessment2/yourOrder.php
+===================================================================
+--- ../assessment2/yourOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/yourOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,68 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>The Pet Food Store</title>
+-    <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+-    <script src="js/script.js"></script>
+-    <title>Welcome to The Pet Food Store</title>
+-</head>
+-
+-<body onload="moveAd(), moveText()">
+-<div class = "header">
+-    <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+-    <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-    <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+-</div>
+-
+-<div id = "nav">
+-    <ul>
+-        <li><a class="active" href="index.php">Home</a></li>
+-        <?php include "category.php" ?>
+-        <li><a href="aboutus.php">About Us</a></li>
+-        <li><a href="register.php">Register Now</a></li>
+-    </ul>
+-</div>
+-<div id = "Main">
+-    <table id = "maintable">
+-        <tr>
+-            <td id="leftside">
+-                <div id ="sideAdv">
+-                    <img src = "images/food2.jpg" id="sideImage">
+-                    <p id = "text1">Welcome</p>
+-                    <p id = "text2">The Pet food Shop</p>
+-                </div>
+-            </td>
+-            <td style="alignment: top">
+-                <div style="width: 90%" align="top">
+-                    <?php include "viewOrder.php"; ?>
+-                    <br><br>
+-
+-                </div>
+-            </td>
+-            <td id="rightside">
+-
+-                <br><br>
+-                <?php include "login.php"; ?><br>
+-                <?php include "category.php"; ?><br><br>
+-                <li class="button"><a href="showCart.php">Shopping Cart</a></li>
+-                <?php
+-                @session_start();
+-                if (isset($_SESSION["userID"])){
+-                    ?>
+-                    <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br>
+-
+-                    <?php
+-                }
+-
+-                ?>
+-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-            </td>
+-        </tr>
+-    </table>
+-</div>
+-
+-
+-</body>
+-<?php include "footer.php" ?>
+-</html>
+\ No newline at end of file
+Index: ../assessment2/css/.idea/workspace.xml
+===================================================================
+--- ../assessment2/css/.idea/workspace.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/css/.idea/workspace.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,39 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ChangeListManager">
+-    <list default="true" id="92fd8ced-6cc2-4d74-97f2-8b6c577da751" name="Default Changelist" comment="" />
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="ComposerSettings">
+-    <execution />
+-  </component>
+-  <component name="ProjectId" id="1jB09u4rsBpOZEm586sD286uFHp" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-    <option name="showMembers" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="vue.rearranger.settings.migration" value="true" />
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="92fd8ced-6cc2-4d74-97f2-8b6c577da751" name="Default Changelist" comment="" />
+-      <created>1603262031325</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1603262031325</updated>
+-      <workItem from="1603262032456" duration="18000" />
+-    </task>
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../assessment2/reviewOrder.php
+===================================================================
+--- ../assessment2/reviewOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/reviewOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,66 +0,0 @@
+-<!DOCTYPE html>
+-<html>
+-<head>
+-    <meta charset="UTF-8">
+-    <title>The Pet Food Store</title>
+-    <link rel = "stylesheet" type = "text/css" href = "css/style.css" >
+-    <script src="js/script.js"></script>
+-</head>
+-<body onload="moveAd(), moveText()">
+-<div class = "header">
+-    <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+-    <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+-    <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+-</div>
+-
+-<div id = "nav">
+-    <ul>
+-        <li><a class="active" href="index.php">Home</a></li>
+-        <?php include "category.php";?>
+-        <li><a href="aboutus.php">About Us</a></li>
+-        <li><a href="register.php">Register Now</a></li>
+-    </ul>
+-</div>
+-<div id = "Main">
+-    <table id = "maintable">
+-        <tr>
+-            <td id="leftside">
+-                <div id ="sideAdv">
+-                    <img src = "images/food2.jpg" id="sideImage">
+-                    <p id = "text1">Welcome</p>
+-                    <p id = "text2">The Pet food Shop</p>
+-                </div>
+-            </td>
+-            <td style="alignment: top">
+-                <div style="width: 80%" >
+-                    <?php include "checkout.php"; ?>
+-                </div>
+-
+-            </td>
+-            <td id="rightside">
+-
+-                <br><br>
+-                <?php include "login.php"; ?><br>
+-                <?php include "category.php"; ?><br><br>
+-                <li class="button"><a href="showCart.php">Shopping Cart</a></li>
+-                <?php
+-                @session_start();
+-                if (isset($_SESSION["userID"])){
+-                    ?>
+-                    <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br>
+-
+-                    <?php
+-                }
+-
+-                ?>
+-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+-            </td>
+-        </tr>
+-    </table>
+-</div>
+-
+-
+-
+-</body>
+-<?php include "footer.php" ?>
+-</html>
+\ No newline at end of file
+Index: ../assessment2/viewOrder.php
+===================================================================
+--- ../assessment2/viewOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../assessment2/viewOrder.php	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
+@@ -1,141 +0,0 @@
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-<link rel="stylesheet" href="css/style.css">
+-<?php
+-@session_start();
+-$userID = $_SESSION["userID"];
+-
+-/*$orderedProductsIDs = $_SESSION["orderedProductIds"];
+-$orderedProductsQtys = $_SESSION["orderedProductQtys"];
+-
+-$i = 0;
+- while ($i<sizeof($orderedProductsIDs)) {
+-
+-    $orderedProductsID = $orderedProductsIDs[$i];
+-    $orderedProductsQty = $orderedProductsQtys[$i];
+-    $productName = getProductNameByProductID($orderedProductsID);
+-    $price = getProductPriceByProductID($orderedProductsID);
+-    $TotalpriceQ = $price * $orderedProductsQty;
+-
+-    $totalAll = $totalAll + ($price * $orderedProductsQty);
+-    $i++;
+-}*/
+-
+-function createDatabaseConnection()
+-{
+-    //create database connection
+-    $server = "c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+-    $dbusername = "h1r174kgefa2bwv1";
+-    $dbpassword = "nz1tdqgzvtixcxel";
+-    $dbname = "dry1psur1w11ayhb";
+-
+-    $conn = new mysqli($server, $dbusername, $dbpassword, $dbname);
+-    return $conn;
+-}
+-
+-// connect to database
+-    $conn = createDatabaseConnection();
+-
+-// first query
+-    $sql = "select * from orders where userID = $userID";
+-
+-//run the first query
+-    $result = mysqli_query($conn, $sql);
+-
+-//show the first query
+-    while ($row = $result->fetch_assoc()) {
+-        echo "<div class = 'w3-table-all' >";
+-        echo "<h2 align='left'>The Pet Food Store Invoice Details</h2>";
+-        echo "<h3 align='left'>Order ID: ". $row["orderID"]."</h3>";
+-        echo "<p align='left'>Date & Time: " . $row["orderdate"] . "</p>";
+-        echo "<h5>Shipping Address: " . $row["shipAddress"] . "</h5>";
+-
+-    //second query
+-    $sql2 = "select * from orderline where orderID = " . $row["orderID"];
+-
+-    //run the second query
+-    $result2 = mysqli_query($conn, $sql2);
+-
+-        echo "<table class='w3-table-all w3-card-4' style='width:80%'>
+-               <tr>
+-               <th>Product Name  </th>
+-               <th>Product Quantity </th>
+-               <th>Total Price </th>
+-               </tr>   ";
+-        $totalAll= 0;
+-    while ($row2 = $result2->fetch_assoc()) {
+-        $name = getProductNameByProductID($row2["productID"]);
+-        $price = getProductPriceByProductID($row2["productID"]);
+-        $qty1 = $row2["Qty"];
+-        $totalprice = $price * $qty1;
+-
+-        echo "<tr>  
+-               <td align='center'>$name</td>
+-               <td align='center'>".$row2["Qty"]."</td>
+-               <td align='center'>$$totalprice</td>
+-               </tr>               
+-               ";
+-        $totalAll = $totalAll + $totalprice; //total invoice price
+-    }
+-    //delivery charges
+-    $delivery = 25;
+-    if ($totalAll>300){
+-        $delivery = 0;
+-        $totalAll = $totalAll + $delivery;
+-    }else{
+-        $delivery = 25;
+-        $totalAll = $totalAll + $delivery;
+-    }
+-    echo "</table>";
+-
+-    echo "<h3 align='left'>Total Invoice Price: $$totalAll</h3><br>";
+-    echo "</div>";
+-}
+-
+-function getProductNameByProductID($productID)
+-{
+-    //create a connection
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select productName from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $name = $row["productName"];
+-    }
+-    return $name;
+-}
+-function getProductPriceByProductID($productID){
+-
+-    //create a connection using function
+-
+-    $conn = createDatabaseConnection();
+-
+-    //creat a query
+-
+-    $sql = "select pricePerUnit from product where id=$productID";
+-
+-    //run the query
+-
+-    $result = mysqli_query($conn, $sql);
+-
+-    //show result
+-
+-    while ($row = $result->fetch_assoc()) {
+-        $price = $row["pricePerUnit"];
+-    }
+-    return $price;
+-}
+-
+-?>
+-
+-
+-
+-
+Index: ../.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5d31a532-6d9e-4162-b575-b96dee9a8bed\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/assessment2/products.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/assessment2/products.php\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/assessment2/reviewOrder.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/assessment2/reviewOrder.php\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"composer.json\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"TypeScript File\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <hideBySeverity>\r\n      <option value=\"15\" />\r\n    </hideBySeverity>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1jkTlv02mZqhvVMLtCJczoh9MfM\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/assessment2/images\" />\r\n    <property name=\"list.type.of.created.stylesheet\" value=\"CSS\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\assessment2\\images\" />\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\assessment2\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\assessment2\\images\" />\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\assessment2\" />\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\" />\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\SessionExercise\" />\r\n      <recent name=\"C:\\Users\\kirte\\OneDrive\\Desktop\\Uni\\19102020\\Case Study 1 Demo-20201019\\HTCSDatabaseProject\\phpAndDatabase\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5d31a532-6d9e-4162-b575-b96dee9a8bed\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1604347243175</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1604347243175</updated>\r\n      <workItem from=\"1604347244251\" duration=\"2125000\" />\r\n      <workItem from=\"1604350545572\" duration=\"2605000\" />\r\n      <workItem from=\"1604431674428\" duration=\"7776000\" />\r\n      <workItem from=\"1604518268775\" duration=\"287000\" />\r\n      <workItem from=\"1604518569142\" duration=\"7593000\" />\r\n      <workItem from=\"1604864272130\" duration=\"7264000\" />\r\n      <workItem from=\"1604950523119\" duration=\"7095000\" />\r\n      <workItem from=\"1605037404430\" duration=\"8262000\" />\r\n      <workItem from=\"1605073383036\" duration=\"4280000\" />\r\n      <workItem from=\"1605123407893\" duration=\"4120000\" />\r\n      <workItem from=\"1605468754442\" duration=\"6843000\" />\r\n      <workItem from=\"1605488328500\" duration=\"156000\" />\r\n      <workItem from=\"1605555143062\" duration=\"7548000\" />\r\n      <workItem from=\"1605588807037\" duration=\"2312000\" />\r\n      <workItem from=\"1605641598425\" duration=\"14333000\" />\r\n      <workItem from=\"1605657173611\" duration=\"196000\" />\r\n      <workItem from=\"1605657444311\" duration=\"393000\" />\r\n      <workItem from=\"1605660926792\" duration=\"5298000\" />\r\n      <workItem from=\"1605667496417\" duration=\"16890000\" />\r\n      <workItem from=\"1605727452223\" duration=\"24124000\" />\r\n      <workItem from=\"1605777349549\" duration=\"2510000\" />\r\n      <workItem from=\"1605808015445\" duration=\"22867000\" />\r\n      <workItem from=\"1605847987204\" duration=\"8271000\" />\r\n      <workItem from=\"1605903283785\" duration=\"3776000\" />\r\n      <workItem from=\"1605991692448\" duration=\"1471000\" />\r\n      <workItem from=\"1605999358685\" duration=\"13270000\" />\r\n      <workItem from=\"1606074556430\" duration=\"737000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"578\" y=\"296\" key=\"#Composer\" timestamp=\"1604350554993\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"578\" y=\"296\" key=\"#Composer/0.0.1536.834@0.0.1536.834\" timestamp=\"1604350554993\" />\r\n    <state x=\"395\" y=\"96\" key=\"#Inspections\" timestamp=\"1604518434909\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"395\" y=\"96\" key=\"#Inspections/0.0.1536.834@0.0.1536.834\" timestamp=\"1604518434909\" />\r\n    <state x=\"-1254\" y=\"175\" key=\"#PHP\" timestamp=\"1605592177052\">\r\n      <screen x=\"-1920\" y=\"8\" width=\"1920\" height=\"1050\" />\r\n    </state>\r\n    <state x=\"-1254\" y=\"175\" key=\"#PHP/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050\" timestamp=\"1605592177052\" />\r\n    <state x=\"532\" y=\"218\" key=\"#com.intellij.fileTypes.FileTypeChooser\" timestamp=\"1604950880785\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"532\" y=\"218\" key=\"#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834\" timestamp=\"1604950880785\" />\r\n    <state x=\"573\" y=\"132\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1605646585360\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"573\" y=\"132\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834\" timestamp=\"1605646585360\" />\r\n    <state x=\"498\" y=\"163\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog\" timestamp=\"1605561009845\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"498\" y=\"163\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.834@0.0.1536.834\" timestamp=\"1605561009845\" />\r\n    <state x=\"260\" y=\"0\" key=\"CommitChangelistDialog2\" timestamp=\"1604953300441\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"260\" y=\"0\" key=\"CommitChangelistDialog2/0.0.1536.834@0.0.1536.834\" timestamp=\"1604953300441\" />\r\n    <state x=\"686\" y=\"199\" key=\"FileChooserDialogImpl\" timestamp=\"1605073749750\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1050\" />\r\n    </state>\r\n    <state x=\"549\" y=\"158\" key=\"FileChooserDialogImpl/0.0.1536.834@0.0.1536.834\" timestamp=\"1604351770054\" />\r\n    <state x=\"686\" y=\"199\" key=\"FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050\" timestamp=\"1605073749750\" />\r\n    <state x=\"371\" y=\"139\" key=\"NewPhpClassDialog\" timestamp=\"1605556902151\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"371\" y=\"139\" key=\"NewPhpClassDialog/0.0.1536.834@0.0.1536.834\" timestamp=\"1605556902151\" />\r\n    <state x=\"-1165\" y=\"436\" key=\"NewPhpFileDialog\" timestamp=\"1605826663316\">\r\n      <screen x=\"-1920\" y=\"8\" width=\"1920\" height=\"1050\" />\r\n    </state>\r\n    <state x=\"-1165\" y=\"436\" key=\"NewPhpFileDialog/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050\" timestamp=\"1605826663316\" />\r\n    <state x=\"604\" y=\"340\" key=\"NewPhpFileDialog/0.0.1536.834@0.0.1536.834\" timestamp=\"1605654859459\" />\r\n    <state x=\"258\" y=\"44\" key=\"SettingsEditor\" timestamp=\"1604950542803\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"258\" y=\"44\" key=\"SettingsEditor/0.0.1536.834@0.0.1536.834\" timestamp=\"1604950542803\" />\r\n    <state x=\"585\" y=\"330\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1604953285285\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"585\" y=\"330\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834\" timestamp=\"1604953285285\" />\r\n    <state x=\"425\" y=\"189\" key=\"run.anything.popup\" timestamp=\"1604439461108\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"834\" />\r\n    </state>\r\n    <state x=\"425\" y=\"189\" key=\"run.anything.popup/0.0.1536.834@0.0.1536.834\" timestamp=\"1604439461108\" />\r\n    <state x=\"-1381\" y=\"203\" width=\"840\" height=\"854\" key=\"search.everywhere.popup\" timestamp=\"1605817404123\">\r\n      <screen x=\"-1920\" y=\"8\" width=\"1920\" height=\"1050\" />\r\n    </state>\r\n    <state x=\"-1381\" y=\"203\" width=\"840\" height=\"854\" key=\"search.everywhere.popup/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050\" timestamp=\"1605817404123\" />\r\n    <state x=\"431\" y=\"155\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1536.834@0.0.1536.834\" timestamp=\"1605044308528\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../.idea/workspace.xml	(revision f2cf61910c23aebc20edcfa766f675ca73259a54)
++++ ../.idea/workspace.xml	(date 1606075691262)
+@@ -3,8 +3,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="5d31a532-6d9e-4162-b575-b96dee9a8bed" name="Default Changelist" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/assessment2/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/assessment2/products.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/assessment2/reviewOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/assessment2/reviewOrder.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -102,7 +100,7 @@
+       <workItem from="1605903283785" duration="3776000" />
+       <workItem from="1605991692448" duration="1471000" />
+       <workItem from="1605999358685" duration="13270000" />
+-      <workItem from="1606074556430" duration="737000" />
++      <workItem from="1606074556430" duration="1125000" />
+     </task>
+     <servers />
+   </component>

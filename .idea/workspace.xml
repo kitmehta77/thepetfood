@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="71a9a610-8e90-4ace-95ae-eb09530ac79d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1kf01P35dTmCLKXegE1azROM1qs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71a9a610-8e90-4ace-95ae-eb09530ac79d" name="Default Changelist" comment="" />
+      <created>1606076122956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606076122956</updated>
+      <workItem from="1606076123979" duration="2694000" />
+      <workItem from="1606079389244" duration="362000" />
+      <workItem from="1606083100329" duration="179000" />
+    </task>
+    <task id="LOCAL-00001" summary="minor changes">
+      <created>1606083191105</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606083191105</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1370" y="98" key="CommitChangelistDialog2" timestamp="1606083190486">
+      <screen x="-1920" y="8" width="1920" height="1050" />
+    </state>
+    <state x="-1370" y="98" key="CommitChangelistDialog2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083190486" />
+    <state x="-1181" y="287" key="FileChooserDialogImpl" timestamp="1606079175363">
+      <screen x="-1920" y="8" width="1920" height="1050" />
+    </state>
+    <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606079175363" />
+    <state x="-1369" y="265" key="Vcs.Push.Dialog.v2" timestamp="1606083195337">
+      <screen x="-1920" y="8" width="1920" height="1050" />
+    </state>
+    <state x="-1369" y="265" key="Vcs.Push.Dialog.v2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083195337" />
+    <state x="-1144" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606083173493">
+      <screen x="-1920" y="8" width="1920" height="1050" />
+    </state>
+    <state x="-1144" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083173493" />
+  </component>
+</project>
