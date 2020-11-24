@@ -279,7 +279,7 @@ p {
 .button a{
     text-decoration: none;
 }
-.sticky{
+#sideAdv{
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
