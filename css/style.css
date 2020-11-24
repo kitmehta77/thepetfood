@@ -299,10 +299,13 @@ p {
     height: auto;
     padding: 10px;
     margin-top: 20px;
-    border: 8px solid #FEDE00;
+    border: 8px solid maroon;
+    border-radius: 12px;
     font-size:40px;
     font-weight:bold;
     line-height: 1;
     text-align: center;
-    background-color: #4CAF50;
+    background-color:blanchedalmond;
+    box-shadow: 10px 10px 20px goldenrod;
+    alignment: center;
 }
