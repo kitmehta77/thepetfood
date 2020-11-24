@@ -71,7 +71,7 @@ p {
 #dogfp {
     display: inline-block;
     position: relative;
-    right: -50%;
+    left: 30%;
 	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
