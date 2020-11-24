@@ -32,6 +32,7 @@ p {
 }
 .mainimage img{
     display: block;
+    float: right;
     width: 30%;
     height: 140px;
     box-shadow: 10px 10px 20px goldenrod;
@@ -67,7 +68,7 @@ p {
 }
 /* page headings */
 #dogfp {
-	font-size: 20px;
+	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
 	font-weight: bold;
