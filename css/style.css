@@ -36,8 +36,8 @@ p {
 .mainimage img{
     display: block;
     float: right;
-    width: 15%;
-    height: 120px;
+    width: 20%;
+    height: 140px;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
     margin-top: 30px;
