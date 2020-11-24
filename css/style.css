@@ -28,15 +28,13 @@ p {
     height: auto;
     border-radius: 12px;
     margin-top: 30px;
-    margin-right: 10%;
+    margin-left: 10%;
 }
 .mainimage img{
     display: block;
     width: 40%;
-    height: auto;
+    height: 30%;
     box-shadow: 10px 10px 20px goldenrod;
-    margin-left: 30%;
-    margin-right: 30%;
     border-radius: 12px;
     margin-top: 30px;
     alignment: center;
@@ -60,7 +58,7 @@ p {
 }
 /* page headings */
 #dogfp {
-	font-size: 50px;
+	font-size: 40px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
 	font-weight: bold;
