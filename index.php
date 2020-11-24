@@ -43,7 +43,7 @@
           <div id = "rightAdv">
             <br><br>
               <?php include "login.php"; ?><br>
-              <?php include "category.php"; ?><br><br>
+<!--              --><?php //include "category.php"; ?><!--<br><br>-->
 
 
             <?php
