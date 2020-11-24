@@ -298,9 +298,10 @@ p {
     width: 90%;
     height: auto;
     padding: 10px;
-    margin-top: 20px;
-    border: 8px solid maroon;
+    margin-top: 50px;
+    border: 8px solid #4CAF50;
     border-radius: 12px;
+    color: #4CAF50;
     font-size:40px;
     font-weight:bold;
     line-height: 1;
