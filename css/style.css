@@ -32,8 +32,8 @@ p {
 .mainimage{
     display: block;
     box-shadow: 10px 10px 20px goldenrod;
-    position: center;
-    margin-left: auto;
+
+    margin-left: 30%;
     margin-right: auto;
     border-radius: 12px;
     margin-top: 30px;
