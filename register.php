@@ -1,3 +1,10 @@
+<?php
+if (isset($_SESSION["userID"])){
+ echo "<h4>You are already Registered</h4>";
+ echo "<h3>Please click <a href='index.php'>here</a>to return to main page</h3>";
+    ?>
+<?php
+?>
 <!Doctype Html>
 
 <html>
