@@ -30,7 +30,7 @@ p {
     margin-top: 30px;
     margin-right: 10%;
 }
-.mainimage{
+.mainimage img{
     display: block;
     box-shadow: 10px 10px 20px goldenrod;
 
@@ -40,12 +40,7 @@ p {
     margin-top: 30px;
     alignment: center;
 }
-.mainimage img {
-    width: 30%;
-    height: auto;
-    position: center;
-    alignment: center;
-}
+
 
 /* Header Pictures */
 @keyframes movingLogo {
