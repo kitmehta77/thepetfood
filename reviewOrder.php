@@ -8,11 +8,10 @@
 </head>
 <body onload="moveAd(), moveText()">
 <div class = "header">
-    <img src = "images/mainimage.jpg" alt="Petfood Main Image">
+    <div class="mainimage"><img src = "images/mainimage.jpg" alt="Petfood Main Image"></div>
     <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
-    <div id="dogfp"><span id="logoText">Welcome to the Pet Food Store</span></div>
+    <div id="dogfp"><span style="alignment: center">The Pet Food Store</span></div>
 </div>
-
 <div id = "nav">
     <ul>
         <li><a class="active" href="index.php">Home</a></li>

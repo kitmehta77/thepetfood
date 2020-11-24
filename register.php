@@ -8,11 +8,11 @@
         <script src="js/script.js"></script>
 
         <body onload="moveAd(), moveText()">
-            <div class="header">
-                <img src="images/mainimage.jpg" alt="Petfood Main Image">
-                <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
-                <div id="dogfp"><span id="logoText">Registration Form</span></div>
-            </div>
+        <div class = "header">
+            <div class="mainimage"><img src = "images/mainimage.jpg" alt="Petfood Main Image"></div>
+            <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
+            <div id="dogfp"><span style="alignment: center">The Pet Food Store</span></div>
+        </div>
             <div id="nav">
                 <ul>
                     <li><a href="index.php">Home</a></li>
