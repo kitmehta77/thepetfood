@@ -32,12 +32,13 @@ p {
 }
 .mainimage img{
     display: block;
-    width: 40%;
+    width: 20%;
     height: 10%;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
     margin-top: 30px;
-    alignment: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
