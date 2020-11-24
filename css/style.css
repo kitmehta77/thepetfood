@@ -33,7 +33,7 @@ p {
 .mainimage img{
     display: block;
     width: 35%;
-    height: 200px;
+    height: 180px;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
     margin-top: 30px;
@@ -50,8 +50,15 @@ p {
     }
     0% {
         left: 100px;
-        transform: rotate(180deg);
+        transform: rotate(90deg);
     }
+    0% {
+        left: 100px;
+        transform: rotate(180deg);
+    } 0% {
+          left: 100px;
+          transform: rotate(270deg);
+      }
     0% {
         left: 100px;
         transform: rotate(360deg);
