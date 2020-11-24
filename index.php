@@ -40,28 +40,27 @@
       </td>
 
       <td id="rightside">
-
-          <br><br>
+          <div id = "rightAdv">
+            <br><br>
               <?php include "login.php"; ?><br>
               <?php include "category.php"; ?><br><br>
-          <div style="alignment: center"></div>
-              <li class="button"><a href="showCart.php">My Shopping Cart</a></li>
-          <?php
-          @session_start();
+            <div style="alignment: center"></div>
+                <li class="button"><a href="showCart.php">My Shopping Cart</a></li>
+            <?php
+            @session_start();
             if (isset($_SESSION["userID"])){
               ?>
 
-          <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br><br>
+            <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br><br>
             </div>
-          <?php
-          }
+            <?php
+              }
 
-          ?>
-          <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
-
-
-
+             ?>
+            <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+         </div>
       </td>
+
     </tr>
   </table>
 </div>
