@@ -72,16 +72,16 @@ p {
 /* page headings */
 #dogfp {
 	font-size: 40px;
-    text-shadow: 3px 3px 5px maroon;
+    text-shadow: 3px 3px 5px goldenrod;
 	text-align: center;
 	font-weight: bold;
-	color: white;
+	color: goldenrod;
     height: auto;
     padding: 10px;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 3%;
-
+    border: 4px solid goldenrod;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
 }
