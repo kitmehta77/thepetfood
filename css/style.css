@@ -32,10 +32,14 @@ p {
 .mainimage{
     box-shadow: 10px 10px 20px goldenrod;
     position: center;
-    width: 100px;
+    width: auto;
     height: auto;
     border-radius: 12px;
     margin-top: 30px;
+}
+.mainimage img {
+    width: 30%;
+    height: auto;
 }
 
 /* Header Pictures */
@@ -55,7 +59,7 @@ p {
 }
 /* page headings */
 #dogfp {
-	font-size: 40px;
+	font-size: 50px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
 	font-weight: bold;
