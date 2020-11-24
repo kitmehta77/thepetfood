@@ -28,12 +28,12 @@ p {
     height: auto;
     border-radius: 12px;
     margin-top: 30px;
-    margin-left: 10%;
+    margin-left: 30%;
 }
 .mainimage img{
     display: block;
     width: 40%;
-    height: 30%;
+    height: 10%;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
     margin-top: 30px;
