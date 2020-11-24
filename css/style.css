@@ -30,14 +30,18 @@ p {
     margin-top: 30px;
 }
 .mainimage{
+    display: block;
     box-shadow: 10px 10px 20px goldenrod;
     position: center;
     border-radius: 12px;
     margin-top: 30px;
+    alignment: center;
 }
 .mainimage img {
     width: 30%;
     height: auto;
+    position: absolute;
+    alignment: center;
 }
 
 /* Header Pictures */
