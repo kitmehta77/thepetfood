@@ -69,7 +69,6 @@ p {
 }
 /* page headings */
 #dogfp {
-    position: relative;
 	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
@@ -77,8 +76,9 @@ p {
 	color: white;
     height: auto;
     padding: 10px;
-    margin-right: 30%;
-    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
     border: 8px solid #4CAF50;
 }
 
