@@ -32,7 +32,7 @@ p {
 }
 .mainimage img{
     display: block;
-    width: 40%;
+    width: 35%;
     height: 200px;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
@@ -49,7 +49,7 @@ p {
         transform: rotate(0deg);
     }
     0% {
-        left: 80%;
+        left: 100px;
         transform: rotate(180deg);
     }
     0% {
@@ -59,7 +59,7 @@ p {
 }
 /* page headings */
 #dogfp {
-	font-size: 40px;
+	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
 	font-weight: bold;
