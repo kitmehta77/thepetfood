@@ -76,6 +76,8 @@ p {
 	color: white;
     height: auto;
     padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 50px;
     border: 8px solid #4CAF50;
 }
