@@ -69,7 +69,7 @@ p {
 }
 /* page headings */
 #dogfp {
-    display: block;
+    display: inline-block;
 	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
 	text-align: center;
