@@ -11,10 +11,11 @@ p {
     color: maroon;
 }
 
-/* Header
-.header img {
+Header
+.header {
+    display: inline-block;
 }
- logo animation using css */
+ /* logo animation using css */
 .logo {
     position: absolute;
     top: 20px;
