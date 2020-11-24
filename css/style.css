@@ -25,12 +25,16 @@ p {
 }
 /* logo animation using css */
 .logo {
-    position: fixed;
+    position: relative;
     top: 20px;
     animation-name: movingLogo;
     animation-duration: 4s;
     animation-iteration-count: initial;
     border-radius: 20px;
+}
+.logo img{
+    width: 100%;
+    height: auto;
 }
 
 /* Header Pictures */
