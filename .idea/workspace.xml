@@ -2,8 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71a9a610-8e90-4ace-95ae-eb09530ac79d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2020_11_12_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2020_11_12_AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/Cart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/aboutus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/addToCart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/category.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/checkout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/footer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/Background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/aboutus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/birdfood6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/cat1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/cat2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/catfood3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/catfood4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/catfood5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/catfood6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/catsmain.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dog1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dog2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dog3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dogfood4.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dogfood5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/dogfood6.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/food2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/main2image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/mainimage.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/petfoodmain.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/petfoodmain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/register.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/images/welcome.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/products.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/registernow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/reviewOrder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/showCart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/viewOrder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/welcome.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petfoodstore/yourOrder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sshid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sshid.pub" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +94,7 @@
       <workItem from="1606090105929" duration="758000" />
       <workItem from="1606092208051" duration="48000" />
       <workItem from="1606179127291" duration="146000" />
+      <workItem from="1606244794111" duration="323000" />
     </task>
     <task id="LOCAL-00001" summary="minor changes">
       <created>1606083191105</created>
@@ -71,6 +122,10 @@
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
     <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606079175363" />
+    <state x="-1098" y="430" key="Github.ShareDialog" timestamp="1606244995803">
+      <screen x="-1920" y="8" width="1920" height="1050" />
+    </state>
+    <state x="-1098" y="430" key="Github.ShareDialog/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606244995803" />
     <state x="-1369" y="265" key="Vcs.Push.Dialog.v2" timestamp="1606083195337">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>

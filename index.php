@@ -25,6 +25,7 @@
 <div id = "Main">
   <table id = "maintable">
     <tr>
+        <section class="sticky">
       <td id="leftside">
         <div id ="sideAdv">
           <img src = "images/food2.jpg" id="sideImage">
@@ -32,12 +33,14 @@
           <p id = "text2">The Pet food Shop</p>
         </div>
       </td>
+        </section>
       <td id="middlecontent">
           <div>
               <?php include "products.php"; ?>
           </div>
 
       </td>
+        <section class="sticky">
       <td id="rightside">
 
           <br><br>
@@ -61,6 +64,7 @@
 
 
       </td>
+    </section>
     </tr>
   </table>
 </div>

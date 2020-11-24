@@ -279,3 +279,8 @@ p {
 .button a{
     text-decoration: none;
 }
+.sticky{
+    position: -webkit-sticky;
+    position:sticky;
+    top:0;
+}
