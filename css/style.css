@@ -71,6 +71,8 @@ p {
 #dogfp {
     display: block;
     alignment: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 40px;
 	font-size: 30px;
     text-shadow: 3px 3px 5px maroon;
