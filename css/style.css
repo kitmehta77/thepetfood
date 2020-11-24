@@ -28,13 +28,14 @@ p {
     height: auto;
     border-radius: 12px;
     margin-top: 30px;
+    margin-right: 10%;
 }
 .mainimage{
     display: block;
     box-shadow: 10px 10px 20px goldenrod;
 
     margin-left: 30%;
-    margin-right: auto;
+    margin-right: 30%;
     border-radius: 12px;
     margin-top: 30px;
     alignment: center;
