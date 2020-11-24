@@ -33,6 +33,8 @@ p {
     display: block;
     box-shadow: 10px 10px 20px goldenrod;
     position: center;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 12px;
     margin-top: 30px;
     alignment: center;
@@ -40,7 +42,7 @@ p {
 .mainimage img {
     width: 30%;
     height: auto;
-    position: absolute;
+    position: center;
     alignment: center;
 }
 
