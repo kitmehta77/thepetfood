@@ -39,7 +39,7 @@
 
             </td>
             <td id="rightside">
-
+                <div id = "rightAdv">
                 <br><br>
                 <?php include "login.php"; ?><br>
                 <?php include "category.php"; ?><br><br>
@@ -55,7 +55,7 @@
 
                 ?>
                 <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
-
+                </div>
 
             </td>
         </tr>
