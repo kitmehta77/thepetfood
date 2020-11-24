@@ -13,15 +13,6 @@ p {
 
 /* Header */
 .header img {
-    display: block;
-    box-shadow: 10px 10px 20px goldenrod;
-    position: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    height: 200px;
-    border-radius: 12px;
-    margin-top: 30px;
 }
 /* logo animation using css */
 .logo {
@@ -35,6 +26,19 @@ p {
 .logo img{
     width: 50%;
     height: auto;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+.mainimage{
+    display: block;
+    box-shadow: 10px 10px 20px goldenrod;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 200px;
+    border-radius: 12px;
+    margin-top: 30px;
 }
 
 /* Header Pictures */
