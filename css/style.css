@@ -32,8 +32,8 @@ p {
 }
 .mainimage img{
     display: block;
-    width: 20%;
-    height: 1%;
+    width: 40%;
+    height: 200px;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 12px;
     margin-top: 30px;
