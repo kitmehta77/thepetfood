@@ -22,10 +22,9 @@ p {
     animation-name: movingLogo;
     animation-duration: 4s;
     animation-iteration-count: initial;
-    border-radius: 20px;
 }
 .logo img{
-    width: 60%;
+    width: 70%;
     height: auto;
     border-radius: 12px;
     margin-top: 30px;
