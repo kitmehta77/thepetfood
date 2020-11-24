@@ -39,21 +39,22 @@
             </td>
             <td id="rightside">
                 <div id = "rightAdv">
-                <br><br>
-                <?php include "login.php"; ?><br>
-                <?php include "category.php"; ?><br><br>
-                <li class="button"><a href="showCart.php">Shopping Cart</a></li>
-                <?php
-                @session_start();
-                if (isset($_SESSION["userID"])){
-                    ?>
-                    <li class="button"><a href="yourOrder.php">My Orders</a></li><br><br>
+                    <br><br>
+                    <?php include "login.php"; ?><br>
+                    <!--              --><?php //include "category.php"; ?><!--<br><br>-->
+
 
                     <?php
-                }
+                    @session_start();
+                    if (isset($_SESSION["userID"])){
+                        ?>
+                        <li class="button"><a href="showCart.php">My Shopping Cart</a></li>
+                        <li class="button"><a href="yourOrder.php">My Orders</a></li>
+                        <?php
+                    }
 
-                ?>
-                <h2 align="center" style="color: maroon">Free Delivery for purchase over $300</h2>
+                    ?>
+                    <h2 id = "quote" style="alignment: center">Free Delivery for purchase over $300</h2>
                 </div>
             </td>
         </tr>
