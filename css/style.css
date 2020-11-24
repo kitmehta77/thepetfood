@@ -25,11 +25,11 @@ p {
 }
 /* logo animation using css */
 .logo {
-    position: absolute;
+    position: fixed;
     top: 20px;
     animation-name: movingLogo;
     animation-duration: 4s;
-    animation-iteration-count: unset;
+    animation-iteration-count: initial;
     border-radius: 20px;
 }
 
