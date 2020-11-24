@@ -280,6 +280,9 @@ p {
     text-decoration: none;
 }
 .sticky{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
     position: -webkit-sticky;
     position:sticky;
     top:0;
