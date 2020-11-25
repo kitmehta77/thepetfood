@@ -12,13 +12,13 @@
  */
 
 function moveAd() {
-	left = 0;
+	left = 100;
 	setInterval(function() {
 		image = document.getElementById("sideImage");
 		image.style.left = left + "px";
 		left--;
-		if (left == -300) {
-			left = 0;
+		if (left == -700) {
+			left = 100;
 		}
 	}, 50);
 }
