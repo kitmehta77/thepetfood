@@ -319,12 +319,12 @@ p {
 #sideAdv{
     position: -webkit-sticky;
     position:sticky;
-    top:50px;
+    top:0px;
 }
 #rightAdv{
     position: -webkit-sticky;
     position:sticky;
-    top:50px;
+    top:0px;
 }
 /*#nav {
     position: -webkit-sticky;
