@@ -149,8 +149,7 @@ p {
     vertical-align: top;
     alignment: center;
     padding-right: 20px;
-    border-radius: 20px;
-    box-shadow: 10px 10px 20px goldenrod;
+    padding-left: 20px;
 
 }
 
