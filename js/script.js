@@ -17,10 +17,10 @@ function moveAd() {
 		image = document.getElementById("sideImage");
 		image.style.left = left + "px";
 		left--;
-		if (left == -900) {
+		if (left == -1200) {
 			left = -100;
 		}
-	}, 10);
+	}, 20);
 }
 
 function moveText() {
