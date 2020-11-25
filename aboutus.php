@@ -31,7 +31,7 @@
                     <p id="text2">Thank you</p>
                 </div>
             </td>
-            <td id="middlecontent" style="width: 80%;">
+            <td id="middlecontent">
 
                 <h1>Welcome to The Pet Food Store, <br> Please read about us and our customer testimonials</h1>
 
