@@ -150,7 +150,8 @@ p {
     vertical-align: top;
     alignment: center;
     padding-right: 20px;
-
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px goldenrod;
 
 }
 
@@ -208,6 +209,7 @@ p {
     margin-left: auto;
     background-color: beige;
     box-shadow: 10px 10px 20px goldenrod;
+    border-radius: 20px;
 }
 .w3-table-all {
     display: block;
