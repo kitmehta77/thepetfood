@@ -2,7 +2,7 @@
 body {
     width: 100%;
     margin: 30px 20px 20px 20px;
-    background-color: white;
+    background-color: blanchedalmond;
     z-index: -1;
     font-family: Calibri, serif;
 }
@@ -15,8 +15,6 @@ p {
 .header {
     display: inline-block;
     width: 100%;
-    background-color: blanchedalmond;
-    padding-bottom: 20px;
 }
  /* logo animation using css */
 .logo {
@@ -40,11 +38,11 @@ p {
 .mainimage img{
     display: block;
     float: right;
-    width: 40%;
+    width: 20%;
     height: 160px;
    /* box-shadow: 10px 10px 20px goldenrod; */
     border-radius: 12px;
-    margin-top: 30px;
+   /* margin-top: 30px; */
 
 }
 
@@ -140,7 +138,6 @@ p {
 #leftside {
     width: 20%;
     vertical-align: top;
-    background-color: blanchedalmond;
     margin-right: -10px;
     z-index: -1;
 
@@ -154,7 +151,7 @@ p {
     margin-right: auto;
     padding-right: 3%;
     padding-left: 3%;
-    background-color: blanchedalmond;
+
 
 }
 
