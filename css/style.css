@@ -159,6 +159,7 @@ p {
     text-align: center;
     border-radius: 12px;
     box-shadow: 10px 10px 20px goldenrod;
+    z-index: -1;
 }
 
 #sideImage {
