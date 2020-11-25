@@ -28,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Desktop/Omnifood - After Section 7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -56,6 +56,7 @@
       <workItem from="1606274744090" duration="1669000" />
       <workItem from="1606276456567" duration="5581000" />
       <workItem from="1606334803742" duration="18000" />
+      <workItem from="1606341380681" duration="561000" />
     </task>
     <task id="LOCAL-00001" summary="minor changes">
       <created>1606083191105</created>
@@ -71,6 +72,10 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$/petfoodstore" />
+    </ignored-roots>
     <MESSAGE value="minor changes" />
     <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
@@ -87,10 +92,10 @@
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
     <state x="-1098" y="430" key="Github.ShareDialog/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606244995803" />
-    <state x="-1460" y="177" key="SettingsEditor" timestamp="1606276506006">
+    <state x="-1460" y="177" key="SettingsEditor" timestamp="1606341945615">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
-    <state x="-1460" y="177" key="SettingsEditor/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606276506006" />
+    <state x="-1460" y="177" key="SettingsEditor/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606341945615" />
     <state x="-1369" y="265" key="Vcs.Push.Dialog.v2" timestamp="1606083195337">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
