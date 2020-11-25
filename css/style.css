@@ -100,7 +100,8 @@ p {
 }
 /*nav bar*/
 #nav li {
-    float: left;
+    /* float: left; */
+    alignment: center;
 }
 
 #nav li a {
@@ -205,7 +206,8 @@ p {
     color: maroon;
     margin-right: auto;
     margin-left: auto;
-    background-color: blanchedalmond;
+    background-color: beige;
+    box-shadow: 10px 10px 20px goldenrod;
 }
 .w3-table-all {
     display: block;
