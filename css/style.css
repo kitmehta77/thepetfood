@@ -100,7 +100,7 @@ p {
 .textmain {
   /*  background-color: black; */
     text-shadow: 3px 3px 5px goldenrod;
-    color: white;
+    color: #4CAF50;
  /*   font-size: 30px; */
     font-weight: bold;
     font-family: sans-serif;
@@ -134,13 +134,13 @@ p {
     background:
             radial-gradient(
                     circle,
-                    white,
+                    blanchedalmond,
                     transparent 25%
             ) center / 25% 25%,
             radial-gradient(
                     circle,
-                    white,
-                    black 25%
+                    blanchedalmond,
+                    black 10%
             ) center / 12.5% 12.5%;
     animation: light 5s linear infinite;
     mix-blend-mode: color-dodge;
