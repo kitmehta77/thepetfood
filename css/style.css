@@ -115,7 +115,7 @@ p {
 }
 .gradient {
     position: absolute;
-    background: linear-gradient(45deg, blanchedalmond, sandybrown, brown, sandybrown, blanchedalmond);
+    background: linear-gradient(45deg, #4CAF50, sandybrown, brown, sandybrown, #4CAF50);
     top: 0;
     left: 0;
     right: 0;
