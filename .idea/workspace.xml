@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="71a9a610-8e90-4ace-95ae-eb09530ac79d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Desktop/Omnifood - After Section 7" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -55,7 +54,8 @@
       <workItem from="1606179127291" duration="146000" />
       <workItem from="1606244794111" duration="21658000" />
       <workItem from="1606274744090" duration="1669000" />
-      <workItem from="1606276456567" duration="5283000" />
+      <workItem from="1606276456567" duration="5581000" />
+      <workItem from="1606334803742" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="minor changes">
       <created>1606083191105</created>
@@ -79,10 +79,10 @@
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
     <state x="-1370" y="98" key="CommitChangelistDialog2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083190486" />
-    <state x="-1181" y="287" key="FileChooserDialogImpl" timestamp="1606079175363">
+    <state x="-1181" y="287" key="FileChooserDialogImpl" timestamp="1606334816582">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
-    <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606079175363" />
+    <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606334816582" />
     <state x="-1098" y="430" key="Github.ShareDialog" timestamp="1606244995803">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
