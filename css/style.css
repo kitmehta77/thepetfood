@@ -1,14 +1,18 @@
-@import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
-@import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
-@import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
+
 /* body */
-body {
+/* body {
     width: 100%;
-   /* margin: 30px 20px 20px 20px; */
     background-color: blanchedalmond;
     z-index: -1;
     font-family: Calibri, serif;
-
+}*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
 }
 
 p {
@@ -78,7 +82,7 @@ p {
 */
 
 /* page headings */
-#dogfp {
+/* #dogfp {
 	font-size: 50px;
     text-shadow: 3px 3px 5px goldenrod;
 	text-align: center;
@@ -89,7 +93,66 @@ p {
     margin-left: 25%;
     margin-right: 30%;
     margin-top: 3%;
+} */
+#dogfp{
+    position: relative;
+    overflow: hidden;
+    filter: brightness(200%);
 }
+.textmain {
+    background-color: black;
+    color: white;
+    font-size: 180px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    user-select: none;
+}
+.textmain::before {
+    content: attr(data-text);
+    position: absolute;
+    color: white;
+    filter: blur(0.02em);
+    mix-blend-mode: difference;
+}
+.gradient {
+    position: absolute;
+    background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    mix-blend-mode: multiply;
+}
+
+.spotlight {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(
+                    circle,
+                    white,
+                    transparent 25%
+            ) center / 25% 25%,
+            radial-gradient(
+                    circle,
+                    white,
+                    black 25%
+            ) center / 12.5% 12.5%;
+    animation: light 5s linear infinite;
+    mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+    to {
+        transform: translate(50%, 50%);
+    }
+}
+
 
 /* Menu */
 #nav ul {
