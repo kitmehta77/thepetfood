@@ -47,7 +47,7 @@ if (!isset($_SESSION["userID"])) {
         <h3 style="color: maroon" align="center">Please Login:</h3>
         <div align="center">
         <input class="w3-input" name="username" type="text" placeholder="Username">
-        <input class="w3-input" name="password" type="password" placeholder="Password"><br><br>
+        <input class="w3-input" name="password" type="password" placeholder="Password"><br>
         <input class= button type="submit" value="Login">
         </div>
     </form>
