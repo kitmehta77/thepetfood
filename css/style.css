@@ -38,11 +38,12 @@ p {
 .mainimage img{
     display: block;
     float: right;
-    width: 20%;
-    height: 160px;
+    width: 25%;
+    height: 200px;
    /* box-shadow: 10px 10px 20px goldenrod; */
     border-radius: 12px;
    /* margin-top: 30px; */
+    margin-bottom: -20px;
 
 }
 
