@@ -3,11 +3,11 @@
 @import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
 /* body */
 body {
-   /* width: 100%;
-    margin: 30px 20px 20px 20px;
-    background-color: blanchedalmond;
+    width: 100%;
+   /* margin: 30px 20px 20px 20px; */
+  /*  background-color: blanchedalmond; */
     z-index: -1;
-    font-family: Calibri, serif; */
+    /* font-family: Calibri, serif; */
     min-height: 450px;
     height: 100vh;
     margin: 0;
