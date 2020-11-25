@@ -5,13 +5,10 @@
 body {
     width: 100%;
    /* margin: 30px 20px 20px 20px; */
-  /*  background-color: blanchedalmond; */
+    background-color: blanchedalmond;
     z-index: -1;
-    /* font-family: Calibri, serif; */
-    min-height: 450px;
-    height: 100vh;
-    margin: 0;
-    background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);
+    font-family: Calibri, serif;
+
 }
 
 p {
