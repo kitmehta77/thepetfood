@@ -196,7 +196,7 @@ p {
 }
 
 #middlecontent {
-    width: 90%;
+    width: 100%;
     vertical-align: top;
     display: inline-block;
     alignment: center;
@@ -204,7 +204,7 @@ p {
     padding-left: 10%;
     margin-left: auto;
     margin-right: auto;
-    background-color: beige;
+    background-color: bisque;
 }
 .w3-table-all {
     display: block;
