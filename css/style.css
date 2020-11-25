@@ -48,7 +48,7 @@ p {
 }
 
 
-/*logo animation*/
+/*logo animation
 @keyframes movingLogo {
     0% {
         left: 100px;
@@ -71,7 +71,7 @@ p {
         transform: rotate(360deg);
     }
 }
-
+*/
 
 /* page headings */
 #dogfp {
