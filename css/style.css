@@ -82,18 +82,18 @@ p {
 */
 
 /* page headings */
-/* #dogfp {
+#dogfp {
 	font-size: 50px;
-    text-shadow: 3px 3px 5px goldenrod;
+   /* text-shadow: 3px 3px 5px goldenrod; */
 	text-align: center;
-	font-weight: bold;
-	color: green;
+	/*font-weight: bold;*/
+	/*color: green;*/
     height: auto;
-    padding: 10px;
+   /* padding: 10px; */
     margin-left: 25%;
     margin-right: 30%;
     margin-top: 3%;
-} */
+}
 #dogfp{
     position: relative;
     overflow: hidden;
@@ -102,7 +102,7 @@ p {
 .textmain {
     background-color: black;
     color: white;
-    font-size: 180px;
+ /*   font-size: 30px; */
     font-weight: bold;
     font-family: sans-serif;
     text-transform: uppercase;
