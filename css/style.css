@@ -140,7 +140,9 @@ p {
 #leftside {
     width: 20%;
     vertical-align: top;
-
+    background-color: beige;
+    margin-right: -10px;
+    z-index: -1;
 
 }
 
