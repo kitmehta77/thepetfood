@@ -58,7 +58,7 @@
               }
 
              ?>
-            <h1 id = "quote" style="alignment: center">Free Delivery for purchase over $300</h1>
+            <h2 id = "quote" style="alignment: center">Free Delivery for purchase over $300</h2>
          </div>
       </td>
 
