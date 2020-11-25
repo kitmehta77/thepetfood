@@ -203,6 +203,7 @@ p {
     display: inline-block;
     alignment: center;
     color: maroon;
+    padding-left: 20px;
     margin-left: auto;
     margin-right: auto;
     background-color: beige;
