@@ -154,9 +154,11 @@ p {
 }
 
 #sideAdv {
-    width: 300px;
+    width: 400px;
     overflow: hidden;
     text-align: center;
+    border-radius: 12px;
+    box-shadow: 10px 10px 20px goldenrod;
 }
 
 #sideImage {
@@ -164,7 +166,7 @@ p {
     position: relative;
     vertical-align: top;
     padding-top: 10px;
-    opacity: 60%;
+    opacity: 70%;
     z-index: -1;
 
 }
@@ -203,6 +205,7 @@ p {
     color: maroon;
     margin-right: 10px;
     margin-left: 40px;
+    background-color: sandybrown;
 }
 .w3-table-all {
     display: block;
@@ -328,14 +331,14 @@ p {
     padding: 10px;
     margin-top: 50px;
     margin-left: 20px;
-    border: 8px solid #4CAF50;
+    border: 8px solid goldenrod;
     border-radius: 12px;
     color: #4CAF50;
     font-size:40px;
     font-weight:bold;
     line-height: 1;
     text-align: center;
-    background-color:blanchedalmond;
+    background-color:white;
     box-shadow: 10px 10px 20px goldenrod;
     alignment: center;
 }
