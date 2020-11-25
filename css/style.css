@@ -140,6 +140,7 @@ p {
 #leftside {
     width: 20%;
     vertical-align: top;
+    border: 2px solid maroon;
 
 }
 
@@ -152,6 +153,7 @@ p {
     padding-right: 3%;
     padding-left: 3%;
     background-color: blanchedalmond;
+    border: 2px solid maroon;
 }
 
 #sideAdv {
@@ -207,6 +209,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     background-color: bisque;
+    border: 2px solid maroon;
 }
 .w3-table-all {
     display: block;
