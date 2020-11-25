@@ -205,7 +205,7 @@ p {
     alignment: center;
     color: maroon;
     margin-right: 30%;
-    margin-left: auto;
+    margin-left: 30%;
     background-color: beige;
     box-shadow: 10px 10px 20px goldenrod;
     border-radius: 20px;
