@@ -12,19 +12,19 @@
  */
 
 function moveAd() {
-	left = 0;
+	left =600;
 	setInterval(function() {
 		image = document.getElementById("sideImage");
 		image.style.left = left + "px";
 		left--;
-		if (left == -500) {
-			left = 0;
+		if (left == 0) {
+			left = 600;
 		}
-	}, 50);
+	}, 150);
 }
 
 function moveText() {
-	top1 = -400;
+	top1 = -700;
 	textNo = 1;
 	setInterval(function() {
 		if (textNo == 1) {
@@ -34,7 +34,7 @@ function moveText() {
 			top1++;
 			if (top1 == -100) {
 				textNo = 2;
-				top1 = -400;
+				top1 = -700;
 				text.style.display = "none";
 			}
 		} else {
@@ -44,7 +44,7 @@ function moveText() {
 			top1++;
 			if (top1 == -100) {
 				textNo = 1;
-				top1 = -400;
+				top1 = -700;
 				text.style.display = "none";
 			}
 		}
