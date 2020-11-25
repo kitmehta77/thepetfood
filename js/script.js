@@ -16,7 +16,7 @@ function moveAd() {
 	setInterval(function() {
 		image = document.getElementById("sideImage");
 		image.style.left = left + "px";
-		left--;
+		left++;
 		if (left == 200) {
 			left = 1000;
 		}
