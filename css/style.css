@@ -80,7 +80,7 @@ p {
 
 /* page headings */
 #dogfp {
-	font-size: 100px;
+	font-size: 50px;
    /* text-shadow: 3px 3px 5px goldenrod; */
 	text-align: center;
 	/*font-weight: bold;*/
@@ -139,8 +139,8 @@ p {
             ) center / 25% 25%,
             radial-gradient(
                     circle,
-                    blanchedalmond,
-                    white 10%
+                    white,
+                    black 25%
             ) center / 12.5% 12.5%;
     animation: light 5s linear infinite;
     mix-blend-mode: color-dodge;
