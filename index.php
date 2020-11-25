@@ -51,7 +51,7 @@
             if (isset($_SESSION["userID"])){
               ?>
                     <div style="alignment: center">
-                <li class="button"><a href="showCart.php">My Shopping Cart</a></li>
+                <li class="button"><a href="showCart.php">My Shopping Cart</a></li><br>
                 <li class="button"><a href="yourOrder.php">My Orders</a></li>
                     </div>
                         <?php
