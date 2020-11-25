@@ -11,7 +11,7 @@
     <div class = "header">
         <div class="mainimage"><img src = "images/mainimage.png" alt="Petfood Main Image"></div>
         <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
-        <div id="dogfp"><span class="textmain">The Pet Food Store</span><span class="gradient"></span><span class="spotlight"></span> </div>
+        <div id="dogfp">The Pet Food Store</div>
     </div>
 
 <div id = "nav">
