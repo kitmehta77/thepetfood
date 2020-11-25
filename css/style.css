@@ -141,7 +141,6 @@ p {
     width: 20%;
     vertical-align: top;
 
-
 }
 
 #rightside {
@@ -157,8 +156,7 @@ p {
     overflow: hidden;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 10px 10px 20px goldenrod;
-    z-index: -1;
+
 }
 
 #sideImage {
@@ -203,12 +201,10 @@ p {
     display: inline-block;
     alignment: center;
     color: maroon;
-    padding-left: 100px;
+    padding-left: 10%;
     margin-left: auto;
     margin-right: auto;
     background-color: beige;
-    box-shadow: 10px 10px 20px goldenrod;
-    border-radius: 20px;
 }
 .w3-table-all {
     display: block;
@@ -280,7 +276,7 @@ p {
 
 .regpic {
     position:fixed;
-    top: 40%;
+    top: 30%;
     left: 60%;
     width:auto;
     height:auto;
