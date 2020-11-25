@@ -14,7 +14,7 @@ p {
 
 .header {
     display: inline-block;
-    background-color: white;
+    background-color: blanchedalmond;
     padding-bottom: 20px;
 }
  /* logo animation using css */
@@ -37,7 +37,7 @@ p {
 
 }
 .mainimage img{
-
+    display: block;
     float: right;
     width: 40%;
     height: 160px;
