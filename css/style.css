@@ -165,7 +165,7 @@ p {
     height: 700px;
     position: relative;
     vertical-align: top;
-    padding-top: 10px;
+  /*  padding-top: 10px; */
     opacity: 70%;
     z-index: -1;
 
@@ -203,9 +203,9 @@ p {
     display: inline-block;
     alignment: center;
     color: maroon;
-    margin-right: 10px;
-    margin-left: 40px;
-    background-color: sandybrown;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: goldenrod;
 }
 .w3-table-all {
     display: block;
