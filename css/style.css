@@ -100,8 +100,8 @@ p {
 }
 /*nav bar*/
 #nav li {
-    /* float: left; */
-    alignment: center;
+    float: left;
+    margin-left: 50%;
 }
 
 #nav li a {
