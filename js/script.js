@@ -12,15 +12,15 @@
  */
 
 function moveAd() {
-	left =600;
+	left = 0;
 	setInterval(function() {
 		image = document.getElementById("sideImage");
 		image.style.left = left + "px";
 		left--;
-		if (left == 0) {
-			left = 600;
+		if (left == -300) {
+			left = 0;
 		}
-	}, 150);
+	}, 50);
 }
 
 function moveText() {
