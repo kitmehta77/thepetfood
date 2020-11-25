@@ -14,6 +14,7 @@ p {
 
 .header {
     display: inline-block;
+    background-color: white;
 }
  /* logo animation using css */
 .logo {
@@ -269,7 +270,7 @@ p {
 
 
 .regpic {
-    position:absolute;
+    position:fixed;
     top: 40%;
     left: 60%;
     width:auto;
