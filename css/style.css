@@ -49,7 +49,7 @@ p {
 }
 
 
-/* Header Pictures */
+/* logo animation
 @keyframes movingLogo {
     0% {
         left: 100px;
@@ -72,13 +72,15 @@ p {
         transform: rotate(360deg);
     }
 }
+*/
+
 /* page headings */
 #dogfp {
 	font-size: 50px;
-    text-shadow: 3px 3px 5px maroon;
+    text-shadow: 3px 3px 5px goldenrod;
 	text-align: center;
 	font-weight: bold;
-	color: white;
+	color: green;
     height: auto;
     padding: 10px;
     margin-left: 25%;
@@ -90,7 +92,7 @@ p {
 #nav ul {
     display: block;
     list-style-type: none;
-    margin: 20px 0px;
+    margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: maroon;
