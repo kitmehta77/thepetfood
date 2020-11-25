@@ -20,7 +20,7 @@ function moveAd() {
 		if (left == -900) {
 			left = -150;
 		}
-	}, -150);
+	}, 50);
 }
 
 function moveText() {
