@@ -15,6 +15,7 @@ p {
 .header {
     display: inline-block;
     background-color: white;
+    padding-bottom: 20px;
 }
  /* logo animation using css */
 .logo {
@@ -32,7 +33,7 @@ p {
     border-radius: 12px;
     margin-top: 20px;
     margin-left: 30%;
-    box-shadow: 10px 10px 20px goldenrod;
+   /* box-shadow: 10px 10px 20px goldenrod; */
 
 }
 .mainimage img{
@@ -40,7 +41,7 @@ p {
     float: right;
     width: 16%;
     height: 140px;
-    box-shadow: 10px 10px 20px goldenrod;
+   /* box-shadow: 10px 10px 20px goldenrod; */
     border-radius: 12px;
     margin-top: 30px;
     margin-left: auto;
