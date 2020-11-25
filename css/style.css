@@ -149,7 +149,7 @@ p {
     alignment: center;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2%;
+    padding-right: 3%;
 }
 
 #sideAdv {
@@ -164,7 +164,7 @@ p {
     position: relative;
     vertical-align: top;
   /*  padding-top: 10px; */
-    opacity: 70%;
+    opacity: 90%;
     z-index: -1;
 
 }
