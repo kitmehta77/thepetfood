@@ -140,7 +140,7 @@ p {
 #leftside {
     width: 20%;
     vertical-align: top;
-    background-color: beige;
+    background-color: blanchedalmond;
     margin-right: -10px;
     z-index: -1;
 
@@ -211,7 +211,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     background-color: bisque;
-    border: 8px solid maroon;
+
 }
 .w3-table-all {
     display: block;
