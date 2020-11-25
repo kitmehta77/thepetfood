@@ -176,9 +176,9 @@ p {
 #text1 {
     position: relative;
     top: -300px;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
-    color:maroon;
+    color:#4CAF50;
 }
 
 #text2 {
