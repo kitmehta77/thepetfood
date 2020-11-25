@@ -9,7 +9,7 @@
 </head>
 <body onload="moveAd(), moveText()">
     <div class = "header">
-        <div class="mainimage"><img src = "images/mainimage.jpg" alt="Petfood Main Image"></div>
+        <div class="mainimage"><img src = "images/petfoodmain.png" alt="Petfood Main Image"></div>
         <div class="logo"><img src="images/logo.png" alt="Petfood Logo"></div>
         <div id="dogfp"><span style="alignment: center">The Pet Food Store</span></div>
     </div>
@@ -27,7 +27,7 @@
     <tr>
       <td id="leftside">
         <div id ="sideAdv">
-          <img src = "images/food2.jpg" id="sideImage">
+          <img src = "images/sideimage.png" id="sideImage">
           <p id = "text1">Welcome!</p>
           <p id = "text2">The Pet food Shop</p>
         </div>
