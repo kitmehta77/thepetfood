@@ -1,14 +1,14 @@
 
 /* body */ body {
     width: 100%;
-    /*background-color: blanchedalmond;*/
+    background-color: blanchedalmond;
     z-index: -1;
     font-family: Calibri, serif;
    /* height: 100vh; */
     /* display: flex; */
    /* align-items: center; */
    /* justify-content: center; */
-    background-color: black;
+   /* background-color: black; */
 }
 
 p {
