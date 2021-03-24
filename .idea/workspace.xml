@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71a9a610-8e90-4ace-95ae-eb09530ac79d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/category.php" beforeDir="false" afterPath="$PROJECT_DIR$/category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2020_11_12_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2020_11_12_AM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,9 @@
       <workItem from="1606274744090" duration="1669000" />
       <workItem from="1606276456567" duration="5581000" />
       <workItem from="1606334803742" duration="18000" />
-      <workItem from="1606341380681" duration="867000" />
+      <workItem from="1606341380681" duration="1660000" />
+      <workItem from="1614911730380" duration="198000" />
+      <workItem from="1616556637955" duration="94000" />
     </task>
     <task id="LOCAL-00001" summary="minor changes">
       <created>1606083191105</created>
@@ -80,29 +84,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1370" y="98" key="CommitChangelistDialog2" timestamp="1606083190486">
+    <state x="-1181" y="287" key="FileChooserDialogImpl" timestamp="1614911926588">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
-    <state x="-1370" y="98" key="CommitChangelistDialog2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083190486" />
-    <state x="-1181" y="287" key="FileChooserDialogImpl" timestamp="1606334816582">
-      <screen x="-1920" y="8" width="1920" height="1050" />
-    </state>
-    <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606334816582" />
-    <state x="-1098" y="430" key="Github.ShareDialog" timestamp="1606244995803">
-      <screen x="-1920" y="8" width="1920" height="1050" />
-    </state>
-    <state x="-1098" y="430" key="Github.ShareDialog/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606244995803" />
+    <state x="-1181" y="287" key="FileChooserDialogImpl/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1614911926588" />
     <state x="-1460" y="177" key="SettingsEditor" timestamp="1606341945615">
       <screen x="-1920" y="8" width="1920" height="1050" />
     </state>
     <state x="-1460" y="177" key="SettingsEditor/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606341945615" />
-    <state x="-1369" y="265" key="Vcs.Push.Dialog.v2" timestamp="1606083195337">
-      <screen x="-1920" y="8" width="1920" height="1050" />
-    </state>
-    <state x="-1369" y="265" key="Vcs.Push.Dialog.v2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083195337" />
-    <state x="-1144" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606083173493">
-      <screen x="-1920" y="8" width="1920" height="1050" />
-    </state>
-    <state x="-1144" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834/-1920.8.1920.1050@-1920.8.1920.1050" timestamp="1606083173493" />
   </component>
 </project>
